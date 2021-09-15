@@ -353,7 +353,7 @@ def admm(M, k, beta, gamma_flag=(False, None), Q_flag=(False, None), label=None,
 
         if label is not None:
             #Logistic Regression update
-            model=LR(random_state=0)
+            model=LR(random_state=0,class_weight='balanced')
             multi_target=MultiOutputClassifier(model, n_jobs=-1)
             thetas=multi_target.fit(W,label).estimators_
             weights=find_weights(label)
