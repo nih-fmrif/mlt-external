@@ -24,6 +24,7 @@ from sklearn.utils import extmath
 from sklearn.utils.class_weight import compute_class_weight
 from sklearn.model_selection import KFold
 from sklearn.linear_model import LogisticRegression as LR
+from sklearn.multioutput import MultiOutputClassifier
 
 from cvxopt import matrix, spmatrix, solvers, sparse, spdiag
 import warnings
@@ -129,40 +130,61 @@ def obj_func(M, W, Q, C, beta, mask=None, regularizer=1, mode='model'):
     
     
 
-def lr_loss(X, label, theta0, theta, gamma, weights):
-    pdb.set_trace()
-    lr = weights*(np.log(1+np.exp(-label*(theta0 + theta.T@X))))[0,:]
+def lr_loss(X, label, thetas, gamma, weights):
+    lr = np.zeros(X.shape[1])
+    for i in range(0,label.shape[1]):
+        theta=thetas[i].coef_
+        theta0=thetas[i].intercept_
+        diagnosis_label=label[:,i]
+        
+        weight=weights[i,0]*np.ones(len(lr))
+        weight[diagnosis_label==1]=weights[i,1]
+        
+        lr+=weight*np.log(1+np.exp(-diagnosis_label[:,np.newaxis]*(theta0+theta@X).T))[0,:]
     return gamma*lr
+
+
+def Glr_loss(X, label, thetas, gamma, weights, idx):
+    Glr = np.zeros((X.shape[0],len(idx)))
+    for i in range(0,label.shape[1]):
+        theta=thetas[i].coef_
+        theta0=thetas[i].intercept_
+        diagnosis_label=label[idx,i]
+        
+        weight=weights[i,0]*np.ones(len(diagnosis_label))
+        weight[diagnosis_label==1]=weights[i,1]
+        weight=weight[:,np.newaxis]
+        Glr += -theta.T@((weight*diagnosis_label[:,np.newaxis]).T)/(np.exp(diagnosis_label[:,np.newaxis]*(theta0 + theta.T*X[:,idx]).T) +1).T
+    return gamma*Glr
 
 
 
 def find_weights(labels):
-    classes,counts=np.unique(labels,return_counts=True)
-    counts=counts/len(labels)
-    weights=np.ones(len(labels))
-    for i in range(0,len(classes)):
-        weights[labels==classes[i]]=counts[i]
+    weights=np.zeros((labels.shape[1],2))
+    for i in range(0,labels.shape[1]):
+        classes,counts=np.unique(labels[:,i],return_counts=True)
+        counts=len(labels)/(2*counts)
+        weights[i,:]=counts
     return weights
     
 
     
-def fista_(A, B, tau, beta, rho, Y, mu, gamma, theta0, theta, label, weights, regularizer=1, maxit=200, X0=None, tol=1e-4):
+def fista_(A, B, tau, beta, rho, Y, mu, gamma, thetas, label, weights, regularizer=1, maxit=200, X0=None, tol=1e-4):
     
-    def fista_obj(X, A, B, Y, mu, beta, tau, rho, gamma, theta0, theta, label, weights, regularizer=1):
+    def fista_obj(X, A, B, Y, mu, beta, tau, rho, gamma, thetas, label, weights, regularizer=1):
         gx = beta*np.linalg.norm(X, ord=regularizer, axis=0)
         fx = 0.5*(rho*np.linalg.norm(B - A@X, ord=2, axis=0)**2 + tau*np.linalg.norm(X - Y + mu/tau, ord=2, axis=0)**2)
         if label is not None:
-            lr = lr_loss(X, label, theta, theta, gamma, weights)
+            lr = lr_loss(X, label, thetas, gamma, weights)
             return gx + fx + lr
         else:
             return gx + fx
-    
     if X0 is None:
         X = np.zeros(A.shape[1], A.shape[0])
     else:
         X = X0.copy()
     
-    prev_obj = fista_obj(X, A, B, Y, mu, beta, tau, rho, gamma, theta0, theta, label, weights, regularizer=regularizer)
+    prev_obj = fista_obj(X, A, B, Y, mu, beta, tau, rho, gamma, thetas, label, weights, regularizer=regularizer)
     t = 2.0
     Op = 2*(rho*(A.T)@A + tau*np.eye(A.shape[1]))
     cross_term = 2*(rho*(A.T)@B + tau*(Y - mu/tau))
@@ -171,22 +193,25 @@ def fista_(A, B, tau, beta, rho, Y, mu, gamma, theta0, theta, label, weights, re
     idx = np.arange(X.shape[1])
     for i in range(maxit):
         Xold = X[:,idx].copy()
+        
         if label is not None:
-            Glr = -theta@((weights[idx, np.newaxis]*label[idx,np.newaxis]).T)/(np.exp(label[idx]*(theta0 + theta*X[:,idx])) +1)
+            Glr=Glr_loss(X, label, thetas, gamma, weights, idx)
         else:
             Glr=0
-        Gf = Op@X[:,idx] - cross_term[:,idx] + gamma*Glr
+            
+        Gf = Op@X[:,idx] - cross_term[:,idx] + Glr
         X[:,idx] = soft_shrinkage(X[:,idx] - Gf / L, beta/L)
         t0 = t
         t = (1 + np.sqrt(1+ 4*t**2))/2
         X[:,idx] = X[:,idx] + ((t0 - 1) / t)*(X[:,idx] - Xold)
         if label is not None:
-            obj = fista_obj(X[:,idx], A, B[:,idx], Y[:,idx], mu[:,idx], beta, tau, rho, gamma, theta0, theta, label[idx], weights[idx], regularizer=regularizer)
+            obj = fista_obj(X[:,idx], A, B[:,idx], Y[:,idx], mu[:,idx], beta, tau, rho, gamma, thetas, label[idx], weights, regularizer=regularizer)
         else:
-            obj = fista_obj(X[:,idx], A, B[:,idx], Y[:,idx], mu[:,idx], beta, tau, rho, gamma, theta0, theta, label, weights, regularizer=regularizer)
+            obj = fista_obj(X[:,idx], A, B[:,idx], Y[:,idx], mu[:,idx], beta, tau, rho, gamma, thetas, label, weights, regularizer=regularizer)
 #         print('Fista_iter {}: energy = {}'.format(i, new_obj))
         
         idx = np.where(np.abs(prev_obj[idx] - obj)/np.abs(obj) > tol)[0]
+
         if idx.shape[0] == 0:
             return X
         else:
@@ -198,11 +223,11 @@ def soft_shrinkage(X, l):
 
 
 
-def admm_classo(X, A, B, beta, tau, rho, gamma_flag=(False,None), theta0=None, theta=None, label=None, weights=None, upper_constraint=(True, 1), regularizer=1,min_iter=1, max_iter=20, tol=1e-4):
-    
-    def Classo_obj(A, B, X, beta, gamma, theta0, theta, label, weights, regularizer=1):
+def admm_classo(X, A, B, beta, tau, rho, gamma_flag=(False,None), thetas=None, label=None, weights=None, upper_constraint=(True, 1), regularizer=1,min_iter=1, max_iter=20, tol=1e-4):
+        
+    def Classo_obj(A, B, X, beta, gamma, thetas, label, weights, regularizer=1):
         if label is not None:
-            return 0.5*rho*np.sum((A@X - B)**2, axis=0) + beta*np.linalg.norm(X, ord=regularizer, axis=0) + lr_loss(X, label, theta0, theta, gamma, weights)
+            return 0.5*rho*np.sum((A@X - B)**2, axis=0) + beta*np.linalg.norm(X, ord=regularizer, axis=0) + lr_loss(X, label, thetas, gamma, weights)
         else:
             return 0.5*rho*np.sum((A@X - B)**2, axis=0) + beta*np.linalg.norm(X, ord=regularizer, axis=0)
     
@@ -215,26 +240,31 @@ def admm_classo(X, A, B, beta, tau, rho, gamma_flag=(False,None), theta0=None, t
         gamma=gamma_flag[1]
     else:
         gamma=0.5
-        
-    prev_obj = Classo_obj(A, B, X, beta, gamma, theta0, theta, label, weights, regularizer=regularizer)
+    
+    prev_obj = Classo_obj(A, B, X, beta, gamma, thetas, label, weights, regularizer=regularizer)
     idx = np.arange(X.shape[1])
 
 
     for i in range(max_iter):
         Xold = X[:,idx].copy()
+        
+        
         if label is not None:
-            X[:,idx] = fista_(A, B[:,idx], tau, beta, rho, Y[:,idx], mu[:,idx], gamma, theta0, theta, label[idx], weights[idx], maxit=200, X0=Xold) # x0
+            X[:,idx] = fista_(A, B[:,idx], tau, beta, rho, Y[:,idx], mu[:,idx], gamma, thetas, label[idx,:], weights, maxit=200, X0=Xold) # x0
         else:
-            X[:,idx] = fista_(A, B[:,idx], tau, beta, rho, Y[:,idx], mu[:,idx], gamma, theta0, theta, label, weights, maxit=200, X0=Xold)
+            X[:,idx] = fista_(A, B[:,idx], tau, beta, rho, Y[:,idx], mu[:,idx], gamma, thetas, label, weights, maxit=200, X0=Xold)
+                
         Y[:,idx] = np.maximum(X[:,idx] + mu[:,idx]/tau, 0)
+        
         if upper_constraint[0]:
             Y[:,idx] = np.minimum(Y[:,idx], upper_constraint[1])
+        
         mu[:,idx] += tau*(X[:,idx] - Y[:,idx])
         
         if label is not None:
-            obj = Classo_obj(A, B[:,idx], X[:,idx], beta, gamma, theta0, theta, label[idx], weights[idx], regularizer=regularizer)
+            obj = Classo_obj(A, B[:,idx], X[:,idx], beta, gamma, thetas, label[idx,:], weights, regularizer=regularizer)
         else:
-            obj = Classo_obj(A, B[:,idx], X[:,idx], beta, gamma, theta0, theta, label, weights, regularizer=regularizer)
+            obj = Classo_obj(A, B[:,idx], X[:,idx], beta, gamma, thetas, label, weights, regularizer=regularizer)
         
         idx = np.where(np.abs(prev_obj[idx] - obj)/np.abs(obj) > tol)[0]
         if i > min_iter:
@@ -284,21 +314,14 @@ def admm_Tik(X, M, B, C, tau, rho, upper_constraint, min_iter=1, max_iter=20, to
 
 
 
-def admm(M, k, beta, gamma_flag=(False, None), Q_flag=(False, None), label=(None,None), C=None, rho=2.0, tau=2.0, mask=None,
+def admm(M, k, beta, gamma_flag=(False, None), Q_flag=(False, None), label=None, C=None, rho=2.0, tau=2.0, mask=None,
          Wconstraint=(False, 1), Qconstraint=(False, 1),
          min_iter=10, max_iter=200, tol=1e-4,
          save_dir='./results/', save_every=(False, 20), outputfile='result'):
     
     if mask is None:
         mask = np.ones_like(M)
-    
-    if not label[0] is None:
-        labels=label[1]
-        label_matrix=label[0]
-    else:
-        labels=None
-        label_matrix=None
-        
+           
     solvers.options['show_progress'] = False
     
     # confounder dimensions
@@ -327,23 +350,22 @@ def admm(M, k, beta, gamma_flag=(False, None), Q_flag=(False, None), label=(None
 
     # Main iteration
     for i in tqdm_iterator:
-                      
-        if labels is not None:
+
+        if label is not None:
             #Logistic Regression update
-            model=LR(random_state=0).fit(W,labels)
-            theta0=model.intercept_
-            theta=model.coef_.T
-            weights=find_weights(labels)
+            model=LR(random_state=0,class_weight='balanced')
+            multi_target=MultiOutputClassifier(model, n_jobs=-1)
+            thetas=multi_target.fit(W,label).estimators_
+            weights=find_weights(label)
         else:
-            theta0, theta, weights=None, None, None
+            thetas, weights=None, None
         
-        pdb.set_trace()
         # subproblem 1
         if C is not None:
             B = Z + aZ/rho - C@(Q[:,k:].T)
         else:
             B = Z + aZ/rho
-        _, W = admm_classo(W.T, Q[:,:k], B.T, betaW, tau, rho, gamma_flag, theta0, theta, label_matrix, weights,
+        _, W = admm_classo(W.T, Q[:,:k], B.T, betaW, tau, rho, gamma_flag, thetas, label, weights,
 upper_constraint=Wconstraint)
 
         # subproblem 2
