@@ -12,6 +12,6 @@
 
 
 #### 2021-09-17
-- first version of regression model with spatial regularization is uploaded.
+- First version of regression model with spatial regularization is uploaded.
 - Brain measurements data are not included in this repo and `SpatialReg_algo.ipynb` is not self-contained.
 - Output files (both statics and interactive) are not uploaded.
