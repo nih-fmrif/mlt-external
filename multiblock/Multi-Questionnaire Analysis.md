@@ -491,35 +491,37 @@ The wordcloud for each factor is shown below:
 
 ## Improvement for multi-questionnaires analysis
 
-To generalize the model to avoid making the universal subject embedding assumption, an intuitive idea is to sub-divide the subject embedding into `general` and `questionnaire specific` dimension. Specifically, there will be one universal subject embedding which depicts common pattern on subjects across all questionnaires, while a specific subject embedding will also be introduced to every single questionnaires. Mathematically, the model to factorize the concatenated matrix $M$ becomes:
+To generalize the model to avoid making the universal subject embedding assumption, an intuitive idea is to sub-divide the subject embedding into `general` and `questionnaire specific` dimension. Specifically, there will be one universal subject embedding which depicts common pattern on subjects across all questionnaires, while a specific subject embedding will also be introduced to every single questionnaires. Mathematically, the model to factorize the concatenated matrix <!-- $M$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=M"> becomes:
 
-$$
+<!-- $$
 M \approx \overline{W} \cdot \overline{Q}^T + \sum_{i=1}^N P_{i} ( W_i Q_i^T) + C \cdot \overline{Q}_c^T
-$$
+$$ --> 
 
-where $P_i$ is a projection function for survey $i$ which projects a submatrix onto the corresponding position at the concatenated matrix $M$. $\overline{W}$ is the general subject embedding and $\overline{Q}$ corresponds to the general question loading. We also enforce boxed-constraint on $W_i$ and sparsity control on all learnable parameters.
+<div align="center"><img style="background: white;" src="https://render.githubusercontent.com/render/math?math=M%20%5Capprox%20%5Coverline%7BW%7D%20%5Ccdot%20%5Coverline%7BQ%7D%5ET%20%2B%20%5Csum_%7Bi%3D1%7D%5EN%20P_%7Bi%7D%20(%20W_i%20Q_i%5ET)%20%2B%20C%20%5Ccdot%20%5Coverline%7BQ%7D_c%5ET"></div>
+
+where <!-- $P_i$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=P_i"> is a projection function for survey <!-- $i$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=i"> which projects a submatrix onto the corresponding position at the concatenated matrix <!-- $M$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=M">. <!-- $\overline{W}$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BW%7D"> is the general subject embedding and <!-- $\overline{Q}$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BQ%7D"> corresponds to the general question loading. We also enforce boxed-constraint on $W_i$ and sparsity control on all learnable parameters.
 
 > **Remark**
 > 
-> The main challenges of this approach is the optimization procedure and the choice of each $W_i$ and $\overline{W}$ dimension. At this early stage, we perform cross validation on each questionnaires as before to obtain the individual intrinsic dimension. The dimension of $\overline{W}$ is chosen to be half of the the direct model (which is $k=10$)
-> Another challenge is the choice of the sparsity parameter $\beta$. The result below used a universal $\beta$ for all $W_i$ and $Q_i$, as well as the universal embedding $\overline{W}, \overline{Q}$ and $\overline{Q_c}$.
-> We also add one extra column in $C$ with all elements equal 1. This serves as a dimension to represent mean response of each question.
+> The main challenges of this approach is the optimization procedure and the choice of each <!-- $W_i$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=W_i"> and <!-- $\overline{W}$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BW%7D"> dimension. At this early stage, we perform cross validation on each questionnaires as before to obtain the individual intrinsic dimension. The dimension of <!-- $\overline{W}$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BW%7D"> is chosen to be half of the the direct model (which is k=10)
+> Another challenge is the choice of the sparsity parameter. The result below used a universal sparsity parameter for all learnable variables.
+> We also add one extra column in <!-- $C$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=C"> with all elements equal 1. This serves as a dimension to represent mean response of each question.
 
 
 ### Embedding
 
-Universal subject embedding $\overline{W}$
+Universal subject embedding <!-- $\overline{W}$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BW%7D">
 ![](./figure/2022-04-08-09-28-36.png)
 
-Question embedding corresponding to the universal subject embedding $\overline{Q}$
+Question embedding corresponding to the universal subject embedding <!-- $\overline{Q}$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BQ%7D">
 ![](./figure/2022-04-08-09-28-56.png)
 
-Cofounder's loading $\overline{Q}_c$ : `Young`, `Old`, `Male`, `Female`, and the mean $\mu$
+Cofounder's loading <!-- $\overline{Q}_c$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BQ%7D_c"> : `Young`, `Old`, `Male`, `Female`, and the mean $\mu$
 ![](./figure/2022-04-08-09-33-50.png)
 
 ### Top components in each factor
 
-Based on $\overline{Q}$, we could similarly order the top 5 surveys contributed to each universal factors:
+Based on <!-- $\overline{Q}$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BQ%7D">, we could similarly order the top 5 surveys contributed to each universal factors:
 
 <img src="./figure/2022-04-08-09-37-55.png" width="400">
 
@@ -717,10 +719,11 @@ For each factor, the top 15 questions are:
 
 ### Zooming into the `CBCL` dataset again
 
-The question embedding specific to `CBCL` $Q_i$
+The question embedding specific to `CBCL` <!-- $Q_i$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=Q_i">
 ![](./figure/2022-04-08-09-42-10.png)
 
-Corresponding question loadings on cofounders specific to `CBCL` $\overline{Q}_c$
+Corresponding question loadings on cofounders specific to `CBCL` <!-- $\overline{Q}_c$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BQ%7D_c">
+
 ![](./figure/2022-04-08-09-41-57.png)
 
 Similarly, we could obtain the question word clouds of each specific factors:
