@@ -721,6 +721,7 @@ Corresponding question loadings on cofounders specific to `CBCL` $\overline{Q}_c
 
 Similarly, we could obtain the question word clouds of each specific factors:
 
+<p float="left">
 <img src="./bimodel-10U7S-specific/factor1.png" width="150">
 <img src="./bimodel-10U7S-specific/factor2.png" width="150">
 <img src="./bimodel-10U7S-specific/factor3.png" width="150">
@@ -728,9 +729,11 @@ Similarly, we could obtain the question word clouds of each specific factors:
 <img src="./bimodel-10U7S-specific/factor5.png" width="150">
 <img src="./bimodel-10U7S-specific/factor6.png" width="150">
 <img src="./bimodel-10U7S-specific/factor7.png" width="150">
+</p>
 
 and the question word clouds of each universal factors:
 
+<p float="left">
 <img src="./bimodel-10U7S-universal/factor1.png" width="150">
 <img src="./bimodel-10U7S-universal/factor2.png" width="150">
 <img src="./bimodel-10U7S-universal/factor3.png" width="150">
@@ -741,5 +744,6 @@ and the question word clouds of each universal factors:
 <img src="./bimodel-10U7S-universal/factor8.png" width="150">
 <img src="./bimodel-10U7S-universal/factor9.png" width="150">
 <img src="./bimodel-10U7S-universal/factor10.png" width="150">
+</p>
 
 As shown in the universal factors, since it is shared with all questionnaires, the number of dimension may not be optimal for `CBCL` and we can see that there are 4 factors which shares very similar pattern (Factor `1`, `4`, `5`, `7`).
