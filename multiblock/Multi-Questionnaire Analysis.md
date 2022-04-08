@@ -721,25 +721,25 @@ Corresponding question loadings on cofounders specific to `CBCL` $\overline{Q}_c
 
 Similarly, we could obtain the question word clouds of each specific factors:
 
-<img src="./bimodel-10U7S-specific/Factor1.png" width="150">
-<img src="./bimodel-10U7S-specific/Factor2.png" width="150">
-<img src="./bimodel-10U7S-specific/Factor3.png" width="150">
-<img src="./bimodel-10U7S-specific/Factor4.png" width="150">
-<img src="./bimodel-10U7S-specific/Factor5.png" width="150">
-<img src="./bimodel-10U7S-specific/Factor6.png" width="150">
-<img src="./bimodel-10U7S-specific/Factor7.png" width="150">
+<img src="./bimodel-10U7S-specific/factor1.png" width="150">
+<img src="./bimodel-10U7S-specific/factor2.png" width="150">
+<img src="./bimodel-10U7S-specific/factor3.png" width="150">
+<img src="./bimodel-10U7S-specific/factor4.png" width="150">
+<img src="./bimodel-10U7S-specific/factor5.png" width="150">
+<img src="./bimodel-10U7S-specific/factor6.png" width="150">
+<img src="./bimodel-10U7S-specific/factor7.png" width="150">
 
 and the question word clouds of each universal factors:
 
-<img src="./bimodel-10U7S-universal/Factor1.png" width="150">
-<img src="./bimodel-10U7S-universal/Factor2.png" width="150">
-<img src="./bimodel-10U7S-universal/Factor3.png" width="150">
-<img src="./bimodel-10U7S-universal/Factor4.png" width="150">
-<img src="./bimodel-10U7S-universal/Factor5.png" width="150">
-<img src="./bimodel-10U7S-universal/Factor6.png" width="150">
-<img src="./bimodel-10U7S-universal/Factor7.png" width="150">
-<img src="./bimodel-10U7S-universal/Factor8.png" width="150">
-<img src="./bimodel-10U7S-universal/Factor9.png" width="150">
-<img src="./bimodel-10U7S-universal/Factor10.png" width="150">
+<img src="./bimodel-10U7S-universal/factor1.png" width="150">
+<img src="./bimodel-10U7S-universal/factor2.png" width="150">
+<img src="./bimodel-10U7S-universal/factor3.png" width="150">
+<img src="./bimodel-10U7S-universal/factor4.png" width="150">
+<img src="./bimodel-10U7S-universal/factor5.png" width="150">
+<img src="./bimodel-10U7S-universal/factor6.png" width="150">
+<img src="./bimodel-10U7S-universal/factor7.png" width="150">
+<img src="./bimodel-10U7S-universal/factor8.png" width="150">
+<img src="./bimodel-10U7S-universal/factor9.png" width="150">
+<img src="./bimodel-10U7S-universal/factor10.png" width="150">
 
 As shown in the universal factors, since it is shared with all questionnaires, the number of dimension may not be optimal for `CBCL` and we can see that there are 4 factors which shares very similar pattern (Factor `1`, `4`, `5`, `7`).
