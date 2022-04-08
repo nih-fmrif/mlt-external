@@ -32,7 +32,7 @@ Most of the subjects were not participated in all surveys, therefore we filtered
 
 We concatenate all questionnaires based on subject ID `EID` to obtain a complete participant list in `HBN` dataset. Then we only includes questionnaires with more than 20% subjects. In particular, the list of questionnaires we considered is shown below:
 
-<img src="/figure/2022-04-01-14-14-49.png" width="300">
+<img src="./figure/2022-04-01-14-14-49.png" width="300">
 
 ## Matrix factorization and imputation
 
@@ -721,25 +721,25 @@ Corresponding question loadings on cofounders specific to `CBCL` $\overline{Q}_c
 
 Similarly, we could obtain the question word clouds of each specific factors:
 
-<img src="./bimodel-10U7S-specific/Factor1 (1).png" width="150">
-<img src="./bimodel-10U7S-specific/Factor2 (1).png" width="150">
-<img src="./bimodel-10U7S-specific/Factor3 (1).png" width="150">
-<img src="./bimodel-10U7S-specific/Factor4 (1).png" width="150">
-<img src="./bimodel-10U7S-specific/Factor5 (1).png" width="150">
-<img src="./bimodel-10U7S-specific/Factor6 (1).png" width="150">
-<img src="./bimodel-10U7S-specific/Factor7 (1).png" width="150">
+<img src="./bimodel-10U7S-specific/Factor1.png" width="150">
+<img src="./bimodel-10U7S-specific/Factor2.png" width="150">
+<img src="./bimodel-10U7S-specific/Factor3.png" width="150">
+<img src="./bimodel-10U7S-specific/Factor4.png" width="150">
+<img src="./bimodel-10U7S-specific/Factor5.png" width="150">
+<img src="./bimodel-10U7S-specific/Factor6.png" width="150">
+<img src="./bimodel-10U7S-specific/Factor7.png" width="150">
 
 and the question word clouds of each universal factors:
 
-<img src="./bimodel-10U7S-universal/Factor1 (1).png" width="150">
-<img src="./bimodel-10U7S-universal/Factor2 (1).png" width="150">
-<img src="./bimodel-10U7S-universal/Factor3 (1).png" width="150">
-<img src="./bimodel-10U7S-universal/Factor4 (1).png" width="150">
-<img src="./bimodel-10U7S-universal/Factor5 (1).png" width="150">
-<img src="./bimodel-10U7S-universal/Factor6 (1).png" width="150">
-<img src="./bimodel-10U7S-universal/Factor7 (1).png" width="150">
-<img src="./bimodel-10U7S-universal/Factor8 (1).png" width="150">
-<img src="./bimodel-10U7S-universal/Factor9 (1).png" width="150">
-<img src="./bimodel-10U7S-universal/Factor10 (1).png" width="150">
+<img src="./bimodel-10U7S-universal/Factor1.png" width="150">
+<img src="./bimodel-10U7S-universal/Factor2.png" width="150">
+<img src="./bimodel-10U7S-universal/Factor3.png" width="150">
+<img src="./bimodel-10U7S-universal/Factor4.png" width="150">
+<img src="./bimodel-10U7S-universal/Factor5.png" width="150">
+<img src="./bimodel-10U7S-universal/Factor6.png" width="150">
+<img src="./bimodel-10U7S-universal/Factor7.png" width="150">
+<img src="./bimodel-10U7S-universal/Factor8.png" width="150">
+<img src="./bimodel-10U7S-universal/Factor9.png" width="150">
+<img src="./bimodel-10U7S-universal/Factor10.png" width="150">
 
 As shown in the universal factors, since it is shared with all questionnaires, the number of dimension may not be optimal for `CBCL` and we can see that there are 4 factors which shares very similar pattern (Factor `1`, `4`, `5`, `7`).
