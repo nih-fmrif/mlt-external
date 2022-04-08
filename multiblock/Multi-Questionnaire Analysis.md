@@ -483,7 +483,7 @@ The wordcloud for each factor is shown below:
 
 > **Remark 1**
 > 
-> Since we concatenate all questionnaires into one large matrix, we implicitly assume that the subject embedding is universal across all questionnaires. In particular, the dimension of subject embedding is influenced by the complexity of all questionnaires. Using blockwise cross-validation on imputating matrix entries, we found that the intrinsic dimension of the concatenated matrix is $k=20$. However, if we only consider `CBCL` dataset, the intrinsic dimension was $k=7$, which is much smaller.
+> Since we concatenate all questionnaires into one large matrix, we implicitly assume that the subject embedding is universal across all questionnaires. In particular, the dimension of subject embedding is influenced by the complexity of all questionnaires. Using blockwise cross-validation on imputating matrix entries, we found that the intrinsic dimension of the concatenated matrix is k=20. However, if we only consider `CBCL` dataset, the intrinsic dimension was k=7, which is much smaller.
 
 > **Remark 2**
 > 
@@ -516,7 +516,7 @@ Universal subject embedding <!-- $\overline{W}$ --> <img style="transform: trans
 Question embedding corresponding to the universal subject embedding <!-- $\overline{Q}$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BQ%7D">
 ![](./figure/2022-04-08-09-28-56.png)
 
-Cofounder's loading <!-- $\overline{Q}_c$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BQ%7D_c"> : `Young`, `Old`, `Male`, `Female`, and the mean $\mu$
+Cofounder's loading <!-- $\overline{Q}_c$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BQ%7D_c"> : `Young`, `Old`, `Male`, `Female`, and the mean
 ![](./figure/2022-04-08-09-33-50.png)
 
 ### Top components in each factor
