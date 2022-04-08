@@ -55,8 +55,10 @@ Through the question embedding, there are some clear relationship between questi
 
 By normalizing the question loadings in each questionnaire, we can also list the top 5 questionnaires in each factors (Apologize for a shift in factor indexing):
 
+<p align="center">
 <img src="./figure/2022-04-07-16-35-46.png" width="400">
 <img src="./figure/2022-04-07-16-36-11.png" width="373">
+</p>
 
 Particularly, we could also extract the top 15 questions in each factor for more detailed understanding. We expected that most factors are unique to particular questionnaire (other it does not make sense to perform multiple surveys). Interestingly, some factors captured "reasonable" relationship across questionnaires. (Factor 6, 8, 10?)
 
@@ -456,6 +458,7 @@ The loadings related to the cofounders `Young`, `Old`, `Male` and `Female`
 
 The wordcloud for each factor is shown below:
 
+<p float="left">
 <img src="./simple_model-20/Factor1.png" width="150">
 <img src="./simple_model-20/Factor2.png" width="150">
 <img src="./simple_model-20/Factor3.png" width="150">
@@ -476,6 +479,7 @@ The wordcloud for each factor is shown below:
 <img src="./simple_model-20/Factor18.png" width="150">
 <img src="./simple_model-20/Factor19.png" width="150">
 <img src="./simple_model-20/Factor20.png" width="150">
+</p>
 
 > **Remark 1**
 > 
