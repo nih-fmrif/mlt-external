@@ -373,7 +373,8 @@ As an exploration, we concatenate the clustered subject embedding with diagnosis
 
 #### Loadings of each Factor
 
-Under the two-level factorization, the importance of each question in every factor is disclosed by the magnitude of $$ P_i. \cdot Q_i $$. Top 20 questions (in terms of magnitude) for each factor is shown below:
+Under the two-level factorization, the importance of each question in every factor is disclosed by the magnitude of $$P_i. \cdot Q_i.$$
+Top 20 questions (in terms of magnitude) for each factor is shown below:
 <details>
   <summary> &rarr; 15 factors</summary>
   <p>
