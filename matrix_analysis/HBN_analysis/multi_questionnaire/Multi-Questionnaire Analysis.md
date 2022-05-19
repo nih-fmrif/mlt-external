@@ -89,161 +89,161 @@ The factors corresponding to the intrinsic dimension for each questionnaire can 
 
 (Click to enlarge)
 <details>
-  <summary>ARI_P</summary>
+  <summary> &rarr; ARI_P</summary>
   <p>
     <img src="./figure/ARI_P_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>ARI_S</summary>
+  <summary> &rarr; ARI_S</summary>
   <p>
     <img src="./figure/ARI_S_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>ASSQ</summary>
+  <summary> &rarr; ASSQ</summary>
   <p>
     <img src="./figure/ASSQ_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>AUDIT</summary>
+  <summary> &rarr; AUDIT</summary>
   <p>
     <img src="./figure/AUDIT_factors.png" width="600/">
   </p>
 </details>
 
 <details>
-  <summary>Barratt</summary>
+  <summary> &rarr; Barratt</summary>
   <p>
     <img src="./figure/Barratt_P1_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>C3SR</summary>
+  <summary> &rarr; C3SR</summary>
   <p>
     <img src="./figure/C3SR_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>CBCL</summary>
+  <summary> &rarr; CBCL</summary>
   <p>
     <img src="./figure/CBCL_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>ESWAN</summary>
+  <summary> &rarr; ESWAN</summary>
   <p>
     <img src="./figure/ESWAN_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>ICU_P</summary>
+  <summary> &rarr; ICU_P</summary>
   <p>
     <img src="./figure/ICU_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>ICU_SR</summary>
+  <summary> &rarr; ICU_SR</summary>
   <p>
     <img src="./figure/ICU_SR_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>MFQ_P</summary>
+  <summary> &rarr; MFQ_P</summary>
   <p>
     <img src="./figure/MFQ_P_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>MFQ_SR</summary>
+  <summary> &rarr; MFQ_SR</summary>
   <p>
     <img src="./figure/MFQ_SR_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>PANAS</summary>
+  <summary> &rarr; PANAS</summary>
   <p>
     <img src="./figure/PANAS_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>RBS</summary>
+  <summary> &rarr; RBS</summary>
   <p>
     <img src="./figure/RBS_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>SCARED_P</summary>
+  <summary> &rarr; SCARED_P</summary>
   <p>
     <img src="./figure/SCARED_P_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>SCARED_SR</summary>
+  <summary> &rarr; SCARED_SR</summary>
   <p>
     <img src="./figure/SCARED_SR_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>SCQ factors</summary>
+  <summary> &rarr; SCQ factors</summary>
   <p>
     <img src="./figure/SCQ_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>SDQ factors</summary>
+  <summary> &rarr; SDQ factors</summary>
   <p>
     <img src="./figure/SDQ_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>SRS factors</summary>
+  <summary> &rarr; SRS factors</summary>
   <p>
     <img src="./figure/SRS_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>SWAN factors</summary>
+  <summary> &rarr; SWAN factors</summary>
   <p>
     <img src="./figure/SWAN_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>SympChck factors</summary>
+  <summary> &rarr; SympChck factors</summary>
   <p>
     <img src="./figure/CSC_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>TRF factors</summary>
+  <summary> &rarr; TRF factors</summary>
   <p>
     <img src="./figure/TRF_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
-  <summary>YSR factors</summary>
+  <summary> &rarr; YSR factors</summary>
   <p>
     <img src="./figure/YSR_factors.png" width="600"/>
   </p>
@@ -308,42 +308,42 @@ Clustering of subjects can be performed based on the obtained subject embedding 
 As an exploration, we concatenate the clustered subject embedding with diagnosis labels. Some obvious consistent patterns between factors and `Suspectred ASD`, `GenAnxiety` could be recognized, which aligns with the high prediction accuracy on those labels.
 
 <details>
-  <summary>ADHD</summary>
+  <summary> &rarr; ADHD</summary>
   <p>
     <img src="./MF_impute_15/subjfactors_ADHD.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>BPD</summary>
+  <summary> &rarr; BPD</summary>
   <p>
     <img src="./MF_impute_15/subjfactors_BPD.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>GenAnxiety</summary>
+  <summary> &rarr; GenAnxiety</summary>
   <p>
     <img src="./MF_impute_15/subjfactors_GenAnxiety.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>Depression</summary>
+  <summary> &rarr; Depression</summary>
   <p>
     <img src="./MF_impute_15/subjfactors_Depression.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>Eating_Disorder</summary>
+  <summary> &rarr; Eating_Disorder</summary>
   <p>
     <img src="./MF_impute_15/subjfactors_Eating_Disorder.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>Suspected_ASD</summary>
+  <summary> &rarr; Suspected_ASD</summary>
   <p>
     <img src="./MF_impute_15/subjfactors_Suspected_ASD.png" width=100%/>
   </p>
@@ -351,21 +351,21 @@ As an exploration, we concatenate the clustered subject embedding with diagnosis
 
 
 <details>
-  <summary>Sleep_Probs</summary>
+  <summary> &rarr; Sleep_Probs</summary>
   <p>
     <img src="./MF_impute_15/subjfactors_Sleep_Probs.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>Specific_Phobia</summary>
+  <summary> &rarr; Specific_Phobia</summary>
   <p>
     <img src="./MF_impute_15/subjfactors_Specific_Phobia.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>Panic_Agoraphobia_SeparationAnx_SocialAnx</summary>
+  <summary> &rarr; Panic_Agoraphobia_SeparationAnx_SocialAnx</summary>
   <p>
     <img src="./MF_impute_15/subjfactors_Panic_Agoraphobia_SeparationAnx_SocialAnx.png" width=100%/>
   </p>
@@ -375,7 +375,7 @@ As an exploration, we concatenate the clustered subject embedding with diagnosis
 
 Under the two-level factorization, the importance of each question in every factor is disclosed by the magnitude of $$ P_i. \cdot Q_i $$. Top 20 questions (in terms of magnitude) for each factor is shown below:
 <details>
-  <summary>15 factors</summary>
+  <summary> &rarr; 15 factors</summary>
   <p>
     <img src="./MF_impute_15/MF_impute_15_factors.png" width=100%/>
   </p>
@@ -391,42 +391,42 @@ Under the two-level factorization, the importance of each question in every fact
 #### Prediction performance of individual questionnaires
 
 <details>
-  <summary>ADHD</summary>
+  <summary> &rarr; ADHD</summary>
   <p>
     <img src="./MF_perQ/prediction_ADHD.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>BPD</summary>
+  <summary> &rarr; BPD</summary>
   <p>
     <img src="./MF_perQ/prediction_BPD.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>GenAnxiety</summary>
+  <summary> &rarr; GenAnxiety</summary>
   <p>
     <img src="./MF_perQ/prediction_GenAnxiety.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>Depression</summary>
+  <summary> &rarr; Depression</summary>
   <p>
     <img src="./MF_perQ/prediction_Depression.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>Eating_Disorder</summary>
+  <summary> &rarr; Eating_Disorder</summary>
   <p>
     <img src="./MF_perQ/prediction_Eating_Disorder.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>Suspected_ASD</summary>
+  <summary> &rarr; Suspected_ASD</summary>
   <p>
     <img src="./MF_perQ/prediction_Suspected_ASD.png" width=100%/>
   </p>
@@ -434,21 +434,21 @@ Under the two-level factorization, the importance of each question in every fact
 
 
 <details>
-  <summary>Sleep_Probs</summary>
+  <summary> &rarr; Sleep_Probs</summary>
   <p>
     <img src="./MF_perQ/prediction_Sleep_Probs.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>Specific_Phobia</summary>
+  <summary> &rarr; Specific_Phobia</summary>
   <p>
     <img src="./MF_perQ/prediction_Specific_Phobia.png" width=100%/>
   </p>
 </details>
 
 <details>
-  <summary>Panic_Agoraphobia_SeparationAnx_SocialAnx</summary>
+  <summary> &rarr; Panic_Agoraphobia_SeparationAnx_SocialAnx</summary>
   <p>
     <img src="./MF_perQ/prediction_Panic_Agoraphobia_SeparationAnx_SocialAnx.png" width=100%/>
   </p>
