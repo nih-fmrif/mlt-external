@@ -38,7 +38,7 @@ The visualization of questionnaires availability is shown below. Notice that que
 
 > **Remark on SWAN and ESWAN**
 > - The scores range from [-3, 3] and possibly typo appears on the description of scales: 
-> 
+>
 > | responses | meaning |
 > | --- | --- |
 > | -3  | Far <span style="color:red">above</span> average |
@@ -48,7 +48,7 @@ The visualization of questionnaires availability is shown below. Notice that que
 > | 1   | Slightly <span style="color:blue">below</span> average |
 > | 2   | <span style="color:blue">Above</span>  average |
 > | 3   | Far <span style="color:blue">above</span>  average |
->
+> 
 > - To align with the motivation of improving interpretation, we split each question on these questionnaires into **<span style="color:blue">Positive [P]</span>** and **<span style="color:red">Negative [N]</span>** variable sets. Therefore, the number of varaibles were doubled in `ESWAN` and `SWAN`.
 >
 
@@ -75,9 +75,8 @@ We concatenate all questionnaires based on subject ID `EID` to obtain a complete
 
 For each questionnaire, we perform analysis similar to CBCL dataset and obtain the intrinsic dimension through blockwise cross validation.
 
-
 <p align="center">
-<img src="./figure/2022-05-19-15-02-42.png" width="400"/>
+<img src="./figure/2022-05-19-15-03-44.png" width="400"/>
 </p>
 
 > **[Update]**
