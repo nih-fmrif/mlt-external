@@ -24,7 +24,7 @@ The visualization of questionnaires availability is shown below. Notice that que
 > **[Update]**
 > 
 > - [2022-05] In previous version, variables such as `Total` or `subscale total` were included. We remove these variables in the current version.
-> - [2022-05] `SympChck` is added into the current version. The requirement for availability is also reduced to $20\%$.
+> - [2022-05] `SympChck` is added into the current version. The requirement for availability is also reduced to 20%.
 
 ![](./figure/2022-05-02-13-42-52.png)
 
@@ -37,15 +37,17 @@ The visualization of questionnaires availability is shown below. Notice that que
 > - All sub-scores / total scores in each questionnaires are removed. This aligns with the assumption that each question (variable) is equally important from different questionnaires.
 
 > **Remark on SWAN and ESWAN**
-> - The scores range from $[-3, 3]$ and possibly typo appears on the description of scales: 
+> - The scores range from [-3, 3] and possibly typo appears on the description of scales: 
 > 
-> > -3= Far <span style="color:red">above</span> average
-> > -2= <span style="color:red">Above</span> average
-> > -1= Slightly <span style="color:red">above</span> average
-> > 0= Average
-> > 1= Slightly <span style="color:blue">below</span> average
-> > 2= <span style="color:blue">Above</span>  average
-> > 3= Far <span style="color:blue">above</span>  average
+> | responses | meaning |
+> | --- | --- |
+> | -3  | Far <span style="color:red">above</span> average |
+> | -2  | <span style="color:red">Above</span> average |
+> | -1  | Slightly <span style="color:red">above</span> average |
+> | 0   | Average |
+> | 1   | Slightly <span style="color:blue">below</span> average |
+> | 2   | <span style="color:blue">Above</span>  average |
+> | 3   | Far <span style="color:blue">above</span>  average |
 >
 > - To align with the motivation of improving interpretation, we split each question on these questionnaires into **<span style="color:blue">Positive [P]</span>** and **<span style="color:red">Negative [N]</span>** variable sets. Therefore, the number of varaibles were doubled in `ESWAN` and `SWAN`.
 >
@@ -81,7 +83,7 @@ For each questionnaire, we perform analysis similar to CBCL dataset and obtain t
 
 ### Factors of each questionnaire
 
-The factors corresponding to the intrinsic dimension for each questionnaire can be computed using the constrained matrix factorization. Top $\min(10,\text{ total number of question})$ questions in each factor are visualized using barplot.
+The factors corresponding to the intrinsic dimension for each questionnaire can be computed using the constrained matrix factorization. Top min(10, total number of question) questions in each factor are visualized using barplot.
 
 (Click to enlarge)
 <details>
@@ -248,8 +250,8 @@ The factors corresponding to the intrinsic dimension for each questionnaire can 
 ## Matrix Imputation and Factorization
 
 We consider two version of matrix imputation
-- **Question Level** : Direct imputation by concatenating questions from all questionnaire. This form a matrix with dimension $3578 \times 1077$ ( Number of subjects $\times$ number of questions). Imputation performs directly on each missing entry in each questions.
-- **Factor Level** : Perform matrix factorization for each questionnaire, followed by concatenating subject embedding factors from each questionnaire. Then perform imputation on the factor level (matrix with dimension $3578 \times 148$).
+- **Question Level** : Direct imputation by concatenating questions from all questionnaire. This form a matrix with dimension 3578 x 1077 ( Number of subjects x number of questions). Imputation performs directly on each missing entry in each questions.
+- **Factor Level** : Perform matrix factorization for each questionnaire, followed by concatenating subject embedding factors from each questionnaire. Then perform imputation on the factor level (matrix with dimension 3578 x 148).
 
 <!-- ### Question Level Imputation and Factorization
 
@@ -261,18 +263,18 @@ Performing matrix factorization directly on the matrix representing the concaten
 
 ![](2022-05-17-07-29-13.png)
 
-In the factor level, the concatenated factors $F$ from questionnaires are shown above. Recall that we have constrained the factors to have range $[0, 1]$.
+In the factor level, the concatenated factors `F` from questionnaires are shown above. Recall that we have constrained the factors to have range [0, 1].
 
 The availability of factor loadings is shown below:
 
 ![](2022-05-17-07-46-39.png)
 
-By treating $F$ as the input matrix, we perform imputation to obtain the following
+By treating `F` as the input matrix, we perform imputation to obtain the following
 
 ![](2022-05-17-07-47-03.png)
 
 > **Remark**
-> Denote $M_i$ to be the matrix data for questionnaire $i$. On individual questionnaire, we have
+> Denote $M_i$ to be the matrix data for questionnaire `i`. On individual questionnaire, we have
 > $$M_i \approx F_i \cdot Q_i^T$$
 > On the factor level, the concatednated factors $F$ is:
 > $$ F = \begin{bmatrix} F_1 \big| F_2 \big| & \cdots & \big| F_k \end{bmatrix} $$
@@ -369,7 +371,7 @@ As an exploration, we concatenate the clustered subject embedding with diagnosis
 
 #### Loadings of each Factor
 
-Under the two-level factorization, the importance of each question in every factor is disclosed by the magnitude of $P_i. \cdot Q_i$. Top 20 questions (in terms of magnitude) for each factor is shown below:
+Under the two-level factorization, the importance of each question in every factor is disclosed by the magnitude of $$ P_i. \cdot Q_i $$. Top 20 questions (in terms of magnitude) for each factor is shown below:
 <details>
   <summary>15 factors</summary>
   <p>
@@ -463,12 +465,12 @@ We also compare prediction performance with different setting. The list of model
 
 Though there is some observable difference in the AUC, the difference is **not** statistically significant. The significance test is done by
 
-- Choose any pairs of models $(A, B)$.
+- Choose any pairs of models (A, B).
 - Randomly shuffle subjects and perform stratified train-validate-test split. Repeat 1000 times.
 - Train and fine tune model using train and validate dataset. Perform inference on test set.
-- Compute AUCs on test set for both model $A$ and $B$.
-- Perform Delong Test to compute p-value on the difference of AUCs between $A$ and $B$. This gives 1000 p-values.
-- Count the number of significance (p-values $< 0.05$) out of 1000 trials.
+- Compute AUCs on test set for both model A and B.
+- Perform Delong Test to compute p-value on the difference of AUCs between A and B. This gives 1000 p-values.
+- Count the number of significance (p-values < 0.05) out of 1000 trials.
 
 ## Achieved results
 
