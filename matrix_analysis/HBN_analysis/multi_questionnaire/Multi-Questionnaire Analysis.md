@@ -461,8 +461,8 @@ Top 20 questions (in terms of magnitude) for each factor is shown below:
 We also compare prediction performance with different setting. The list of models are:
 - `MF_direct_80` : After normalizing each questionnaire, concatenate all questions and perform matrix factorization directly. By cross-validation, the intrinsic dimension detect is 80.
 - `FA_55_KNNimpute` : We use k-NN to impute missing entries. Then we perform factor analysis with varimax rotation on the matrix as in `MF_direct_80`. Cross validation result reveals the intrinsic dimension under Factor Analysis is 55.
-- `impute_15` : We perform matrix factorization on individual questionnaires, the factors representing subject embeddings are then concatenated (i.e., the factor level factorization we mentioned above). After imputation, the reconstructed matrix is used as input feature for the prediction model (148 dimension/factors). Dimension 15 is chosen by cross-validation.
-- `impute_15Factor` : Instead of using the reconstructed matrix as in `impute_15`, we use the 15-D embeddings of factors as input feature for the prediction model.
+- `impute_15` : We first perform matrix factorization on individual questionnaires, the factors representing subject embeddings in each questionnaire are then concatenated and factorized. After factorization, the approximated matrix (148 dimension/factors) is used as input features to build the prediction model. `15` here stands for number of factors in 2nd level factorization, which is chosen by cross-validation.
+- `impute_15Factor` : Instead of using the approximated matrix as in `impute_15`, we simply use the 15-D embeddings of factors as input feature to build the prediction model.
 
 ![](./MF_impute_15/prediction_summary.png)
 <!-- ![](./MF_impute_15/prediction_f1.png) -->
