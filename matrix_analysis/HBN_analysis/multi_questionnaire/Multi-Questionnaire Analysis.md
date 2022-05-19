@@ -303,6 +303,7 @@ The corresponding correlation matrix is
 #### Subject embedding
 
 Clustering of subjects can be performed based on the obtained subject embedding $W$. However, more investigation has to be done to find connection between clusters and phenotypes.
+
 ![](2022-05-18-09-16-20.png)
 
 As an exploration, we concatenate the clustered subject embedding with diagnosis labels. Some obvious consistent patterns between factors and `Suspectred ASD`, `GenAnxiety` could be recognized, which aligns with the high prediction accuracy on those labels.
@@ -463,8 +464,8 @@ We also compare prediction performance with different setting. The list of model
 - `impute_15` : We perform matrix factorization on individual questionnaires, the factors representing subject embeddings are then concatenated (i.e., the factor level factorization we mentioned above). After imputation, the reconstructed matrix is used as input feature for the prediction model (148 dimension/factors). Dimension 15 is chosen by cross-validation.
 - `impute_15Factor` : Instead of using the reconstructed matrix as in `impute_15`, we use the 15-D embeddings of factors as input feature for the prediction model.
 
-![](./figure/prediction_summary.png)
-<!-- ![](./figure/prediction_f1.png) -->
+![](./MF_impute_15/prediction_summary.png)
+<!-- ![](./MF_impute_15/prediction_f1.png) -->
 
 Though there is some observable difference in the AUC, the difference is **not** statistically significant. The significance test is done by
 
