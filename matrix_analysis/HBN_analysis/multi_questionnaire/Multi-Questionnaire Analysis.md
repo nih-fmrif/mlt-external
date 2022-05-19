@@ -3,40 +3,479 @@
 
 - [Multi-Questionnaire Analysis](#multi-questionnaire-analysis)
   - [Data Preparation](#data-preparation)
-  - [Matrix factorization and imputation](#matrix-factorization-and-imputation)
-    - [Embedding](#embedding)
-    - [Top components in each factor](#top-components-in-each-factor)
-    - [Zooming into the `CBCL` dataset](#zooming-into-the-cbcl-dataset)
-  - [Improvement for multi-questionnaires analysis](#improvement-for-multi-questionnaires-analysis)
-    - [Embedding](#embedding-1)
-    - [Top components in each factor](#top-components-in-each-factor-1)
-    - [Zooming into the `CBCL` dataset again](#zooming-into-the-cbcl-dataset-again)
+  - [Individual questionnaire analysis](#individual-questionnaire-analysis)
+    - [Factors of each questionnaire](#factors-of-each-questionnaire)
+  - [Matrix Imputation and Factorization](#matrix-imputation-and-factorization)
+    - [Factor Level Imputation and Factorization](#factor-level-imputation-and-factorization)
+      - [Factorization on Concatenated Factors](#factorization-on-concatenated-factors)
+      - [Subject embedding](#subject-embedding)
+      - [Loadings of each Factor](#loadings-of-each-factor)
+    - [Prediction performance](#prediction-performance)
+      - [Prediction performance of individual questionnaires](#prediction-performance-of-individual-questionnaires)
+      - [Prediction performance for harmonized data](#prediction-performance-for-harmonized-data)
+  - [Achieved results](#achieved-results)
 
 ## Data Preparation
 
 With multiple questionnaires, we extract subject and question embedding by factorizing concatenated, normalized questionnaires.
 
-The visualization of questionnaires availability is shown below. Notice that questionnaires have varying scales (upper $x$-axis in the figure) and we used the maximum norm for normalization in the pre-processing step.
+The visualization of questionnaires availability is shown below. Notice that questionnaires have varying scales (upper $x$-axis in the figure).
 
-![](./figure/2022-04-01-14-22-53.png)
+> **[Update]**
+> 
+> - [2022-05] In previous version, variables such as `Total` or `subscale total` were included. We remove these variables in the current version.
+> - [2022-05] `SympChck` is added into the current version. The requirement for availability is also reduced to $20\%$.
+
+![](./figure/2022-05-02-13-42-52.png)
+
+> **Remark**
+> 
+> - As recognized by Bridget, reversing scores for odd-numbered questions is required for `PANAS` questionnaire.
+> - `ESWAN` questionnaire has 4 subscales: `MDD`, `DMDD`, `Panic` and `SocAnx`. These groupings were ignored during all experiments.
+> - We only consider the 5 questions in `CSSRS`, ignoring variables such as `_ideationtype`, `_freq`, `_duration`, `_controllability`, etc.
+> - In `SymChck`, we only consider variable in `current` time point. We ignore variables measured in the `Past`.
+> - All sub-scores / total scores in each questionnaires are removed. This aligns with the assumption that each question (variable) is equally important from different questionnaires.
+
+> **Remark on SWAN and ESWAN**
+> - The scores range from $[-3, 3]$ and possibly typo appears on the description of scales: 
+> 
+> > -3= Far <span style="color:red">above</span> average
+> > -2= <span style="color:red">Above</span> average
+> > -1= Slightly <span style="color:red">above</span> average
+> > 0= Average
+> > 1= Slightly <span style="color:blue">below</span> average
+> > 2= <span style="color:blue">Above</span>  average
+> > 3= Far <span style="color:blue">above</span>  average
+>
+> - To align with the motivation of improving interpretation, we split each question on these questionnaires into **<span style="color:blue">Positive [P]</span>** and **<span style="color:red">Negative [N]</span>** variable sets. Therefore, the number of varaibles were doubled in `ESWAN` and `SWAN`.
+>
+
 
 > **Remark**
 > 
 > Normalizing with respect to maximum norm is the simplest approach for normalization, under the assumption that responses from different questionnaires have equivalent importance. However, it could be problematic when sparsity of questionnaires varies. For instance, the `Barratt` responses is related to occupation types and educational level. Therefore most of the responses are non-zeros (due to the way we quantify occupation types and education level). Yet, most entries from `CBCL` are zeros.
+> 
+> One possible way to bypass the challenge is to consider a two-level factorization. The first level is conducted on each individual questionnaire, while the second level is conducted on the concatenated factors from the first level. Results and details will be reported in later section.
 
 After maximum norm normalization, the matrix representing the concatenated questionnaires is shown below:
 
-![](./figure/2022-04-07-16-19-09.png)
+![](2022-05-17-07-22-05.png)
 
 Most of the subjects were not participated in all surveys, therefore we filtered some questionnaires with very few subjects before matrix factorization was performed.
 
-We concatenate all questionnaires based on subject ID `EID` to obtain a complete participant list in `HBN` dataset. Then we only includes questionnaires with more than 20% subjects. In particular, the list of questionnaires we considered is shown below:
+We concatenate all questionnaires based on subject ID `EID` to obtain a complete participant list in the `HBN` dataset. We only includes questionnaires with more than `20%` subjects. In particular, the list of questionnaires we considered is shown below:
+<p align="center">
+<img src="./figure/2022-05-13-17-12-59.png" width="300">
+</p>
 
-<img src="./figure/2022-04-01-14-14-49.png" width="300">
+## Individual questionnaire analysis
 
-## Matrix factorization and imputation
+For each questionnaire, we perform analysis similar to CBCL dataset and obtain the intrinsic dimension through blockwise cross validation.
+<p align="center">
+<img src="./figure/2022-05-13-17-14-28.png" width="400">
+</p>
 
-### Embedding
+> **[Update]**
+> 
+> - [2022-05] The intrinsic dimension of `CBCL` by cross validation is updated to 11. The difference is due to a finer scale of hyperparameter search and a better optimization strategy used in the updated algorithm.
+
+### Factors of each questionnaire
+
+The factors corresponding to the intrinsic dimension for each questionnaire can be computed using the constrained matrix factorization. Top $\min(10,\text{ total number of question})$ questions in each factor are visualized using barplot.
+
+(Click to enlarge)
+<details>
+  <summary>ARI_P</summary>
+  <p>
+    <img src="./figure/ARI_P_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>ARI_S</summary>
+  <p>
+    <img src="./figure/ARI_S_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>ASSQ</summary>
+  <p>
+    <img src="./figure/ASSQ_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>AUDIT</summary>
+  <p>
+    <img src="./figure/AUDIT_factors.png" width="600/">
+  </p>
+</details>
+
+<details>
+  <summary>Barratt</summary>
+  <p>
+    <img src="./figure/Barratt_P1_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>C3SR</summary>
+  <p>
+    <img src="./figure/C3SR_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>CBCL</summary>
+  <p>
+    <img src="./figure/CBCL_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>ESWAN</summary>
+  <p>
+    <img src="./figure/ESWAN_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>ICU_P</summary>
+  <p>
+    <img src="./figure/ICU_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>ICU_SR</summary>
+  <p>
+    <img src="./figure/ICU_SR_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>MFQ_P</summary>
+  <p>
+    <img src="./figure/MFQ_P_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>MFQ_SR</summary>
+  <p>
+    <img src="./figure/MFQ_SR_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>PANAS</summary>
+  <p>
+    <img src="./figure/PANAS_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>RBS</summary>
+  <p>
+    <img src="./figure/RBS_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>SCARED_P</summary>
+  <p>
+    <img src="./figure/SCARED_P_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>SCARED_SR</summary>
+  <p>
+    <img src="./figure/SCARED_SR_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>SCQ factors</summary>
+  <p>
+    <img src="./figure/SCQ_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>SDQ factors</summary>
+  <p>
+    <img src="./figure/SDQ_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>SRS factors</summary>
+  <p>
+    <img src="./figure/SRS_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>SWAN factors</summary>
+  <p>
+    <img src="./figure/SWAN_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>SympChck factors</summary>
+  <p>
+    <img src="./figure/CSC_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>TRF factors</summary>
+  <p>
+    <img src="./figure/TRF_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary>YSR factors</summary>
+  <p>
+    <img src="./figure/YSR_factors.png" width="600"/>
+  </p>
+</details>
+
+## Matrix Imputation and Factorization
+
+We consider two version of matrix imputation
+- **Question Level** : Direct imputation by concatenating questions from all questionnaire. This form a matrix with dimension $3578 \times 1077$ ( Number of subjects $\times$ number of questions). Imputation performs directly on each missing entry in each questions.
+- **Factor Level** : Perform matrix factorization for each questionnaire, followed by concatenating subject embedding factors from each questionnaire. Then perform imputation on the factor level (matrix with dimension $3578 \times 148$).
+
+<!-- ### Question Level Imputation and Factorization
+
+Performing matrix factorization directly on the matrix representing the concatenated questionnaire, we come up with the following imputed result
+
+![](2022-05-17-07-23-50.png) -->
+
+### Factor Level Imputation and Factorization
+
+![](2022-05-17-07-29-13.png)
+
+In the factor level, the concatenated factors $F$ from questionnaires are shown above. Recall that we have constrained the factors to have range $[0, 1]$.
+
+The availability of factor loadings is shown below:
+
+![](2022-05-17-07-46-39.png)
+
+By treating $F$ as the input matrix, we perform imputation to obtain the following
+
+![](2022-05-17-07-47-03.png)
+
+> **Remark**
+> Denote $M_i$ to be the matrix data for questionnaire $i$. On individual questionnaire, we have
+> $$M_i \approx F_i \cdot Q_i^T$$
+> On the factor level, the concatednated factors $F$ is:
+> $$ F = \begin{bmatrix} F_1 \big| F_2 \big| & \cdots & \big| F_k \end{bmatrix} $$
+> which is further factorized to
+> $$ F \approx W \cdot P^T =W \cdot \begin{bmatrix} P_1 \big| P_2 \big| & \cdots & \big| P_k \end{bmatrix}^T$$
+> This gives
+> $$ M_i \approx W \cdot P_i^T \cdot Q_i^T $$
+
+#### Factorization on Concatenated Factors
+
+The factorization results on the factor levels reveal the relevant relationship between factors from individual questionnaires. For instance, the third factor from `SCARED_P` has a strong relationship with its 7-th factor, 4-th factor in `SympChck` and also 3-rd factor in `SCARED_SR`. 
+
+![](2022-05-17-17-28-51.png)
+
+The corresponding correlation matrix is
+
+![](2022-05-17-17-47-29.png)
+
+> **Remark**
+> - There is a observable correlation between factors from self-reported questionnaires: `YSR`, `scared_sr`, `MFQ_SR` and `C3SR`
+> - `CBCL` factors are correlated with multiple questionnaires. This implies `CBCL` factors cover subspaces spanned by multiple questionnaires' factors. This is consistent to our understanding that `CBCL` is comprehensive.
+> - `TRF` is relatively independent and factors within `TRF` are correlated. It might indicates that questions in `TRF` are excessive.
+
+#### Subject embedding
+
+Clustering of subjects can be performed based on the obtained subject embedding $W$. However, more investigation has to be done to find connection between clusters and phenotypes.
+![](2022-05-18-09-16-20.png)
+
+As an exploration, we concatenate the clustered subject embedding with diagnosis labels. Some obvious consistent patterns between factors and `Suspectred ASD`, `GenAnxiety` could be recognized, which aligns with the high prediction accuracy on those labels.
+
+<details>
+  <summary>ADHD</summary>
+  <p>
+    <img src="./MF_impute_15/subjfactors_ADHD.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>BPD</summary>
+  <p>
+    <img src="./MF_impute_15/subjfactors_BPD.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>GenAnxiety</summary>
+  <p>
+    <img src="./MF_impute_15/subjfactors_GenAnxiety.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>Depression</summary>
+  <p>
+    <img src="./MF_impute_15/subjfactors_Depression.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>Eating_Disorder</summary>
+  <p>
+    <img src="./MF_impute_15/subjfactors_Eating_Disorder.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>Suspected_ASD</summary>
+  <p>
+    <img src="./MF_impute_15/subjfactors_Suspected_ASD.png" width=100%/>
+  </p>
+</details>
+
+
+<details>
+  <summary>Sleep_Probs</summary>
+  <p>
+    <img src="./MF_impute_15/subjfactors_Sleep_Probs.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>Specific_Phobia</summary>
+  <p>
+    <img src="./MF_impute_15/subjfactors_Specific_Phobia.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>Panic_Agoraphobia_SeparationAnx_SocialAnx</summary>
+  <p>
+    <img src="./MF_impute_15/subjfactors_Panic_Agoraphobia_SeparationAnx_SocialAnx.png" width=100%/>
+  </p>
+</details>
+
+#### Loadings of each Factor
+
+Under the two-level factorization, the importance of each question in every factor is disclosed by the magnitude of $P_i. \cdot Q_i$. Top 20 questions (in terms of magnitude) for each factor is shown below:
+<details>
+  <summary>15 factors</summary>
+  <p>
+    <img src="./MF_impute_15/MF_impute_15_factors.png" width=100%/>
+  </p>
+</details>
+<br>
+
+> **Remark**
+> Using the two-level scheme, we bypass the needs of normalization for each questionnaire during individual factorization because we enforce the subject embeddings obtained via the first level ranging from [0, 1].
+> However, if we would like to study the contribution of each question in the factors, we still need to make an assumption that every question is as importance as others. Otherwise, misinterpretation may occur.
+
+### Prediction performance
+
+#### Prediction performance of individual questionnaires
+
+<details>
+  <summary>ADHD</summary>
+  <p>
+    <img src="./MF_perQ/prediction_ADHD.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>BPD</summary>
+  <p>
+    <img src="./MF_perQ/prediction_BPD.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>GenAnxiety</summary>
+  <p>
+    <img src="./MF_perQ/prediction_GenAnxiety.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>Depression</summary>
+  <p>
+    <img src="./MF_perQ/prediction_Depression.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>Eating_Disorder</summary>
+  <p>
+    <img src="./MF_perQ/prediction_Eating_Disorder.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>Suspected_ASD</summary>
+  <p>
+    <img src="./MF_perQ/prediction_Suspected_ASD.png" width=100%/>
+  </p>
+</details>
+
+
+<details>
+  <summary>Sleep_Probs</summary>
+  <p>
+    <img src="./MF_perQ/prediction_Sleep_Probs.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>Specific_Phobia</summary>
+  <p>
+    <img src="./MF_perQ/prediction_Specific_Phobia.png" width=100%/>
+  </p>
+</details>
+
+<details>
+  <summary>Panic_Agoraphobia_SeparationAnx_SocialAnx</summary>
+  <p>
+    <img src="./MF_perQ/prediction_Panic_Agoraphobia_SeparationAnx_SocialAnx.png" width=100%/>
+  </p>
+</details>
+
+#### Prediction performance for harmonized data
+
+We also compare prediction performance with different setting. The list of models are:
+- `MF_direct_80` : After normalizing each questionnaire, concatenate all questions and perform matrix factorization directly. By cross-validation, the intrinsic dimension detect is 80.
+- `FA_55_KNNimpute` : We use k-NN to impute missing entries. Then we perform factor analysis with varimax rotation on the matrix as in `MF_direct_80`. Cross validation result reveals the intrinsic dimension under Factor Analysis is 55.
+- `impute_15` : We perform matrix factorization on individual questionnaires, the factors representing subject embeddings are then concatenated (i.e., the factor level factorization we mentioned above). After imputation, the reconstructed matrix is used as input feature for the prediction model (148 dimension/factors). Dimension 15 is chosen by cross-validation.
+- `impute_15Factor` : Instead of using the reconstructed matrix as in `impute_15`, we use the 15-D embeddings of factors as input feature for the prediction model.
+
+![](./figure/prediction_summary.png)
+<!-- ![](./figure/prediction_f1.png) -->
+
+Though there is some observable difference in the AUC, the difference is **not** statistically significant. The significance test is done by
+
+- Choose any pairs of models $(A, B)$.
+- Randomly shuffle subjects and perform stratified train-validate-test split. Repeat 1000 times.
+- Train and fine tune model using train and validate dataset. Perform inference on test set.
+- Compute AUCs on test set for both model $A$ and $B$.
+- Perform Delong Test to compute p-value on the difference of AUCs between $A$ and $B$. This gives 1000 p-values.
+- Count the number of significance (p-values $< 0.05$) out of 1000 trials.
+
+## Achieved results
+
+<details>
+<summary>Direct embedding </summary>
+
+**Direct Embedding**
 
 Using the boxed-constrained non-negative matrix factorization with spartiy control, we factorize the normalized matrix to obtain subject and question embedding.
 
@@ -51,7 +490,7 @@ Through the question embedding, there are some clear relationship between questi
 - the 6-th factor shows the relationship between questions in `C3SR` and `SRS`
 - the 9-th factor shows the relationship between questions in `SCQ`, `C3SR`, `YSR`
 
-### Top components in each factor
+**Top components in each factor**
 
 By normalizing the question loadings in each questionnaire, we can also list the top 5 questionnaires in each factors (Apologize for a shift in factor indexing):
 
@@ -442,7 +881,7 @@ Particularly, we could also extract the top 15 questions in each factor for more
 15: [YSR_10]--10. I have trouble sitting still
 ```
 
-### Zooming into the `CBCL` dataset
+**Zooming into the `CBCL` dataset**
 
 Previous section demonstrated that by concatenate all questionnaires information to perform matrix factorization, we could reveal relationship across questionnaires. But certainly it will also affect the factorization of individual questionnaires. 
 
@@ -489,7 +928,12 @@ The wordcloud for each factor is shown below:
 > 
 > The assumption that there is a universal subject embedding for all questionnaires might or might not deteriorate the factorization result. If this is not a valid assumption, an effect called `negative transfer` may happen. As the name suggested, instead of concatenating useful information from different questionnaires, a lost in information happens to compensate the invalid assumption. This undersiable effect had been observed in the community developing `Collective matrix factorization (CMF)`. The problem setting of CMF is similar but more restrictive than ours: each subject had completed all questionnaires and `CMF` is equivalent to a multi-view matrix factorization.
 
-## Improvement for multi-questionnaires analysis
+</details>
+
+<details>
+<summary>Partial embedding </summary>
+
+**Improvement for multi-questionnaires analysis**
 
 To generalize the model to avoid making the universal subject embedding assumption, an intuitive idea is to sub-divide the subject embedding into `general` and `questionnaire specific` dimension. Specifically, there will be one universal subject embedding which depicts common pattern on subjects across all questionnaires, while a specific subject embedding will also be introduced to every single questionnaires. Mathematically, the model to factorize the concatenated matrix <!-- $M$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=M"> becomes:
 
@@ -508,7 +952,7 @@ where <!-- $P_i$ --> <img style="transform: translateY(0.1em); background: white
 > We also add one extra column in <!-- $C$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=C"> with all elements equal 1. This serves as a dimension to represent mean response of each question.
 
 
-### Embedding
+**Embedding**
 
 Universal subject embedding <!-- $\overline{W}$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BW%7D">
 ![](./figure/2022-04-08-09-28-36.png)
@@ -519,7 +963,7 @@ Question embedding corresponding to the universal subject embedding <!-- $\overl
 Cofounder's loading <!-- $\overline{Q}_c$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BQ%7D_c"> : `Young`, `Old`, `Male`, `Female`, and the mean
 ![](./figure/2022-04-08-09-33-50.png)
 
-### Top components in each factor
+**Top components in each factor**
 
 Based on <!-- $\overline{Q}$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Coverline%7BQ%7D">, we could similarly order the top 5 surveys contributed to each universal factors:
 
@@ -717,7 +1161,7 @@ For each factor, the top 15 questions are:
 15: [TRF_80]--80. Stares blankly
 ```
 
-### Zooming into the `CBCL` dataset again
+**Zooming into the `CBCL` dataset again**
 
 The question embedding specific to `CBCL` <!-- $Q_i$ --> <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=Q_i">
 ![](./figure/2022-04-08-09-42-10.png)
@@ -754,3 +1198,5 @@ and the question word clouds of each universal factors:
 </p>
 
 As shown in the universal factors, since it is shared with all questionnaires, the number of dimension may not be optimal for `CBCL` and we can see that there are 4 factors which shares very similar pattern (Factor `1`, `4`, `5`, `7`).
+
+</details>
