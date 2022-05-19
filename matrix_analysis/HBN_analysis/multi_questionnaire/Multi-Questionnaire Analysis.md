@@ -66,15 +66,18 @@ After maximum norm normalization, the matrix representing the concatenated quest
 Most of the subjects were not participated in all surveys, therefore we filtered some questionnaires with very few subjects before matrix factorization was performed.
 
 We concatenate all questionnaires based on subject ID `EID` to obtain a complete participant list in the `HBN` dataset. We only includes questionnaires with more than `20%` subjects. In particular, the list of questionnaires we considered is shown below:
+
 <p align="center">
-<img src="./figure/2022-05-13-17-12-59.png" width="300">
+<img src="./figure/2022-05-19-15-02-42.png" width="300"/>
 </p>
 
 ## Individual questionnaire analysis
 
 For each questionnaire, we perform analysis similar to CBCL dataset and obtain the intrinsic dimension through blockwise cross validation.
+
+
 <p align="center">
-<img src="./figure/2022-05-13-17-14-28.png" width="400">
+<img src="./figure/2022-05-19-15-02-42.png" width="400"/>
 </p>
 
 > **[Update]**
