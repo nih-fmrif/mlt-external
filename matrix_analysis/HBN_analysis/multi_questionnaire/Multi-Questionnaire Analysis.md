@@ -2,7 +2,7 @@
 
 
 - [Multi-Questionnaire Analysis](#multi-questionnaire-analysis)
-  - [New Updates](#new-updates)
+  - [Updates (2022-06-15)](#updates-2022-06-15)
     - [Data loading](#data-loading)
     - [Factorization of individual questionnaire](#factorization-of-individual-questionnaire)
     - [Meta-factorization of questionnaires](#meta-factorization-of-questionnaires)
@@ -20,7 +20,7 @@
       - [Prediction performance for harmonized data](#prediction-performance-for-harmonized-data)
   - [Achieved results](#achieved-results)
 
-## New Updates
+## Updates (2022-06-15)
 
 ### Data loading
 
@@ -36,27 +36,27 @@
 - Train, validation, test split are incorporated into the matrix factorization and prediction steps.
   <details>
   <summary> Full dataset </summary>
-  <img src="/output/figure/merge_response_normalized.png" width="800"/>
+  <img src="./output/figure/merge_response_normalized.png" width="800"/>
   </details>
 
   <details>
   <summary> Availability </summary>
-  <img src="/output/figure/merge_response_availability.png" width="800"/>
+  <img src="./output/figure/merge_response_availability.png" width="800"/>
   </details>
 
   <details>
   <summary> Train availability</summary>
-  <img src="/output/figure/merge_train.png" width="800"/>
+  <img src="./output/figure/merge_train.png" width="800"/>
   </details>
 
   <details>
   <summary> Validation availability</summary>
-  <img src="/output/figure/merge_valid.png" width="800"/>
+  <img src="./output/figure/merge_valid.png" width="800"/>
   </details>
 
   <details>
   <summary> Test availability </summary>
-  <img src="/output/figure/merge_test.png" width="800"/>
+  <img src="./output/figure/merge_test.png" width="800"/>
   </details>
 
 
@@ -74,14 +74,14 @@ Factors for each questionnaires are shown below (Click to enlarge)
 <details>
   <summary> &rarr; ARI_P</summary>
   <p>
-    <img src="/output/figure/factors/ARI_P_factors.png" width="600"/>
+    <img src="./output/figure/factors/ARI_P_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; ARI_S</summary>
   <p>
-    <img src="/output/figure/factors/ARI_S_factors.png" width="600"/>
+    <img src="./output/figure/factors/ARI_S_factors.png" width="600"/>
   </p>
 </details>
 
@@ -95,91 +95,91 @@ Factors for each questionnaires are shown below (Click to enlarge)
 <details>
   <summary> &rarr; C3SR</summary>
   <p>
-    <img src="/output/figure/factors/C3SR_factors.png" width="600"/>
+    <img src="./output/figure/factors/C3SR_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; CBCL</summary>
   <p>
-    <img src="/output/figure/factors/CBCL_factors.png" width="600"/>
+    <img src="./output/figure/factors/CBCL_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; ESWAN</summary>
   <p>
-    <img src="/output/figure/factors/ESWAN_factors.png" width="600"/>
+    <img src="./output/figure/factors/ESWAN_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; ICU_P</summary>
   <p>
-    <img src="/output/figure/factors/ICU_factors.png" width="600"/>
+    <img src="./output/figure/factors/ICU_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; ICU_SR</summary>
   <p>
-    <img src="/output/figure/factors/ICU_SR_factors.png" width="600"/>
+    <img src="./output/figure/factors/ICU_SR_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; MFQ_P</summary>
   <p>
-    <img src="/output/figure/factors/MFQ_P_factors.png" width="600"/>
+    <img src="./output/figure/factors/MFQ_P_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; MFQ_SR</summary>
   <p>
-    <img src="/output/figure/factors/MFQ_SR_factors.png" width="600"/>
+    <img src="./output/figure/factors/MFQ_SR_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; PANAS</summary>
   <p>
-    <img src="/output/figure/factors/PANAS_factors.png" width="600"/>
+    <img src="./output/figure/factors/PANAS_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; RBS</summary>
   <p>
-    <img src="/output/figure/factors/RBS_factors.png" width="600"/>
+    <img src="./output/figure/factors/RBS_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; SCARED_P</summary>
   <p>
-    <img src="/output/figure/factors/SCARED_P_factors.png" width="600"/>
+    <img src="./output/figure/factors/SCARED_P_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; SCARED_SR</summary>
   <p>
-    <img src="/output/figure/factors/SCARED_SR_factors.png" width="600"/>
+    <img src="./output/figure/factors/SCARED_SR_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; SCQ factors</summary>
   <p>
-    <img src="/output/figure/factors/SCQ_factors.png" width="600"/>
+    <img src="./output/figure/factors/SCQ_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; SDQ factors</summary>
   <p>
-    <img src="/output/figure/factors/SDQ_factors.png" width="600"/>
+    <img src="./output/figure/factors/SDQ_factors.png" width="600"/>
   </p>
 </details>
 
@@ -193,28 +193,28 @@ Factors for each questionnaires are shown below (Click to enlarge)
 <details>
   <summary> &rarr; SWAN factors</summary>
   <p>
-    <img src="/output/figure/factors/SWAN_factors.png" width="600"/>
+    <img src="./output/figure/factors/SWAN_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; SympChck factors</summary>
   <p>
-    <img src="/output/figure/factors/CSC_factors.png" width="600"/>
+    <img src="./output/figure/factors/SympChck_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; TRF factors</summary>
   <p>
-    <img src="/output/figure/factors/TRF_factors.png" width="600"/>
+    <img src="./output/figure/factors/TRF_factors.png" width="600"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; YSR factors</summary>
   <p>
-    <img src="/output/figure/factors/YSR_factors.png" width="600"/>
+    <img src="./output/figure/factors/YSR_factors.png" width="600"/>
   </p>
 </details>
 
@@ -309,77 +309,77 @@ For istance, if we choose only top 10 questions in each factors (143 questions),
 
 <details> 
 <summary> &rarr; Factor 1</summary>
-<img src="/output/figure/variable_reduction/factors/factors_1.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_1.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 2</summary>
-<img src="/output/figure/variable_reduction/factors/factors_2.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_2.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 3</summary>
-<img src="/output/figure/variable_reduction/factors/factors_3.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_3.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 4</summary>
-<img src="/output/figure/variable_reduction/factors/factors_4.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_4.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 5</summary>
-<img src="/output/figure/variable_reduction/factors/factors_5.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_5.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 6</summary>
-<img src="/output/figure/variable_reduction/factors/factors_6.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_6.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 7</summary>
-<img src="/output/figure/variable_reduction/factors/factors_7.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_7.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 8</summary>
-<img src="/output/figure/variable_reduction/factors/factors_8.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_8.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 9</summary>
-<img src="/output/figure/variable_reduction/factors/factors_9.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_9.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 10</summary>
-<img src="/output/figure/variable_reduction/factors/factors_10.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_10.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 12</summary>
-<img src="/output/figure/variable_reduction/factors/factors_11.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_11.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 12</summary>
-<img src="/output/figure/variable_reduction/factors/factors_12.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_12.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 13</summary>
-<img src="/output/figure/variable_reduction/factors/factors_13.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_13.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 14</summary>
-<img src="/output/figure/variable_reduction/factors/factors_14.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_14.png" width="800"/>
 </details>
 
 <details> 
 <summary> &rarr; Factor 15</summary>
-<img src="/output/figure/variable_reduction/factors/factors_15.png" width="800"/>
+<img src="./output/figure/variable_reduction/factors/factors_15.png" width="800"/>
 </details>
 
 
