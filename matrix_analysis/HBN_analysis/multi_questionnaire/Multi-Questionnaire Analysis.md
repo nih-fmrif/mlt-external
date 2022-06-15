@@ -6,6 +6,7 @@
     - [Data loading](#data-loading)
     - [Factorization of individual questionnaire](#factorization-of-individual-questionnaire)
     - [Meta-factorization of questionnaires](#meta-factorization-of-questionnaires)
+    - [Prediction](#prediction)
     - [Variables reduction](#variables-reduction)
   - [Data Preparation](#data-preparation)
   - [Individual questionnaire analysis](#individual-questionnaire-analysis)
@@ -259,7 +260,25 @@ Based on the meta-factors, correlation/cosine similarity between pairs of meta-f
 > - The ESWAN has the largest number of factors. This is reasonable as there are 4 groups of variables: `SocAnx`, `MDD`, `DMDD`, `Panic`
 > - Fixing the duplication of responses in `TRF` helps improving the quality of factors.
 
+### Prediction
 
+<img src="./output/figure/prediction/prediction_ADHD.png" width="800"/>
+<img src="./output/figure/prediction/prediction_BPD.png" width="800"/>
+<img src="./output/figure/prediction/prediction_Depression.png" width="800"/>
+<img src="./output/figure/prediction/prediction_Eating_Disorder.png" width="800"/>
+<img src="./output/figure/prediction/prediction_Encopresis_Enuresis.png" width="800"/>
+<img src="./output/figure/prediction/prediction_GenAnxiety.png" width="800"/>
+<img src="./output/figure/prediction/prediction_OCD.png" width="800"/>
+<img src="./output/figure/prediction/prediction_ODD_ConductDis.png" width="800"/>
+<img src="./output/figure/prediction/prediction_PTSD_Trauma.png" width="800"/>
+<img src="./output/figure/prediction/prediction_Panic_Agoraphobia_SeparationAnx_SocialAnx.png" width="800"/>
+<img src="./output/figure/prediction/prediction_Schizophrenia_Psychosis.png" width="800"/>
+<img src="./output/figure/prediction/prediction_Sleep_Probs.png" width="800"/>
+<img src="./output/figure/prediction/prediction_Specific_Phobia.png" width="800"/>
+<img src="./output/figure/prediction/prediction_Substance_Issue.png" width="800"/>
+<img src="./output/figure/prediction/prediction_Suicidal_SelfHarm_Homicidal.png" width="800"/>
+<img src="./output/figure/prediction/prediction_Suspected_ASD.png" width="800"/>
+<img src="./output/figure/prediction/prediction_Tic.png" width="800"/>
 
 ### Variables reduction
 
