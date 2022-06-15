@@ -29,11 +29,6 @@
 - Issues from previous version have been modified
 - For `TRF`, we observed that there are multiple responses for the same subjects. We suspect multiple teachers filled in reports for each subjects. (4521 items $\to$ 1506 items).
 
-  <details>
-  <summary> For instance </summary>
-  <img src="./2022-06-15-02-31-30.png" width="800"/>
-  </details>
-
 - Train, validation, test split are incorporated into the matrix factorization and prediction steps.
   <details>
   <summary> Full dataset </summary>
