@@ -250,9 +250,9 @@ These gives the meta-factor factorization:
 ![](2022-06-15-07-59-37.png)
 
 Based on the meta-factors, correlation/cosine similarity between pairs of meta-factors can be computed:
-<img src="2022-06-15-08-06-22.png" width="600"/>
-<img src="2022-06-15-08-07-04.png" width="600"/>
-<img src="2022-06-15-08-30-18.png" width="600"/>
+<img src="2022-06-15-08-06-22.png" width="800"/>
+<img src="2022-06-15-08-07-04.png" width="800"/>
+<img src="2022-06-15-08-30-18.png" width="800"/>
 
 > **Remark**
 > - The optimal L1-beta detect is small (0.01), implying that the input matrix (aggregrated factors) are rich in information and there is not much room for further sparsification.
@@ -269,39 +269,39 @@ From the meta-factors, we are able to recover the question-level embedding. Impo
 
 To study the availability of reducing questions, we gradually reduce the number of questions by
 
-<img src="/output/figure/variable_reduction/ADHD_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/ADHD_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/BPD_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/BPD_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/Depression_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/Depression_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/Eating_Disorder_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/Eating_Disorder_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/Encopresis_Enuresis_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/Encopresis_Enuresis_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/GenAnxiety_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/GenAnxiety_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/OCD_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/OCD_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/ODD_ConductDis_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/ODD_ConductDis_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/PTSD_Trauma_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/PTSD_Trauma_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/Panic_Agoraphobia_SeparationAnx_SocialAnx_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/Panic_Agoraphobia_SeparationAnx_SocialAnx_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/Schizophrenia_Psychosis_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/Schizophrenia_Psychosis_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/Sleep_Probs_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/Sleep_Probs_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/Specific_Phobia_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/Specific_Phobia_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/Substance_Issue_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/Substance_Issue_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/Suicidal_SelfHarm_Homicidal_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/Suicidal_SelfHarm_Homicidal_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/Suspected_ASD_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/Suspected_ASD_trend.png" width="600"/>
 
-<img src="/output/figure/variable_reduction/Tic_trend.png" width="600"/>
+<img src="./output/figure/variable_reduction/Tic_trend.png" width="600"/>
 
 
 
