@@ -84,7 +84,7 @@ Factors for each questionnaires are shown below (Click to enlarge)
 <details>
   <summary> &rarr; ASSQ</summary>
   <p>
-    <img src="/output/figure/factors/ASSQ_factors.png" width="600"/>
+    <img src="./output/figure/factors/ASSQ_factors.png" width="600"/>
   </p>
 </details>
 
@@ -182,7 +182,7 @@ Factors for each questionnaires are shown below (Click to enlarge)
 <details>
   <summary> &rarr; SRS factors</summary>
   <p>
-    <img src="/output/figure/factors/SRS_factors.png" width="600"/>
+    <img src="./output/figure/factors/SRS_factors.png" width="600"/>
   </p>
 </details>
 
