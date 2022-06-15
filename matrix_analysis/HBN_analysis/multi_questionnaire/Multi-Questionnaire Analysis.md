@@ -61,7 +61,7 @@
 
 Using a finer grid-search on the optimal intrinsic dimension, a more compact result is obtained
 
-<img src="2022-06-15-07-28-03.png" width="600"/>
+<img src="2022-06-15-07-28-03.png" width="800"/>
 
 The detection is based on a block-wise cross validation scheme, in which the optimal pair (dimesion, L1-beta) is recognized through grid-search. For example, the `C3SR` questionnaire :
 <img src="2022-06-15-07-42-09.png" width="800"/>
@@ -70,147 +70,147 @@ Factors for each questionnaires are shown below (Click to enlarge)
 <details>
   <summary> &rarr; ARI_P</summary>
   <p>
-    <img src="./output/figure/factors/ARI_P_factors.png" width="600"/>
+    <img src="./output/figure/factors/ARI_P_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; ARI_S</summary>
   <p>
-    <img src="./output/figure/factors/ARI_S_factors.png" width="600"/>
+    <img src="./output/figure/factors/ARI_S_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; ASSQ</summary>
   <p>
-    <img src="./output/figure/factors/ASSQ_factors.png" width="600"/>
+    <img src="./output/figure/factors/ASSQ_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; C3SR</summary>
   <p>
-    <img src="./output/figure/factors/C3SR_factors.png" width="600"/>
+    <img src="./output/figure/factors/C3SR_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; CBCL</summary>
   <p>
-    <img src="./output/figure/factors/CBCL_factors.png" width="600"/>
+    <img src="./output/figure/factors/CBCL_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; ESWAN</summary>
   <p>
-    <img src="./output/figure/factors/ESWAN_factors.png" width="600"/>
+    <img src="./output/figure/factors/ESWAN_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; ICU_P</summary>
   <p>
-    <img src="./output/figure/factors/ICU_factors.png" width="600"/>
+    <img src="./output/figure/factors/ICU_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; ICU_SR</summary>
   <p>
-    <img src="./output/figure/factors/ICU_SR_factors.png" width="600"/>
+    <img src="./output/figure/factors/ICU_SR_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; MFQ_P</summary>
   <p>
-    <img src="./output/figure/factors/MFQ_P_factors.png" width="600"/>
+    <img src="./output/figure/factors/MFQ_P_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; MFQ_SR</summary>
   <p>
-    <img src="./output/figure/factors/MFQ_SR_factors.png" width="600"/>
+    <img src="./output/figure/factors/MFQ_SR_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; PANAS</summary>
   <p>
-    <img src="./output/figure/factors/PANAS_factors.png" width="600"/>
+    <img src="./output/figure/factors/PANAS_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; RBS</summary>
   <p>
-    <img src="./output/figure/factors/RBS_factors.png" width="600"/>
+    <img src="./output/figure/factors/RBS_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; SCARED_P</summary>
   <p>
-    <img src="./output/figure/factors/SCARED_P_factors.png" width="600"/>
+    <img src="./output/figure/factors/SCARED_P_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; SCARED_SR</summary>
   <p>
-    <img src="./output/figure/factors/SCARED_SR_factors.png" width="600"/>
+    <img src="./output/figure/factors/SCARED_SR_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; SCQ factors</summary>
   <p>
-    <img src="./output/figure/factors/SCQ_factors.png" width="600"/>
+    <img src="./output/figure/factors/SCQ_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; SDQ factors</summary>
   <p>
-    <img src="./output/figure/factors/SDQ_factors.png" width="600"/>
+    <img src="./output/figure/factors/SDQ_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; SRS factors</summary>
   <p>
-    <img src="./output/figure/factors/SRS_factors.png" width="600"/>
+    <img src="./output/figure/factors/SRS_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; SWAN factors</summary>
   <p>
-    <img src="./output/figure/factors/SWAN_factors.png" width="600"/>
+    <img src="./output/figure/factors/SWAN_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; SympChck factors</summary>
   <p>
-    <img src="./output/figure/factors/SympChck_factors.png" width="600"/>
+    <img src="./output/figure/factors/SympChck_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; TRF factors</summary>
   <p>
-    <img src="./output/figure/factors/TRF_factors.png" width="600"/>
+    <img src="./output/figure/factors/TRF_factors.png" width="800"/>
   </p>
 </details>
 
 <details>
   <summary> &rarr; YSR factors</summary>
   <p>
-    <img src="./output/figure/factors/YSR_factors.png" width="600"/>
+    <img src="./output/figure/factors/YSR_factors.png" width="800"/>
   </p>
 </details>
 
