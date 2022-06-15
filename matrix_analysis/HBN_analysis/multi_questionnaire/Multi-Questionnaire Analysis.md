@@ -305,6 +305,82 @@ To study the availability of reducing questions, we gradually reduce the number 
 
 
 
+For istance, if we choose only top 10 questions in each factors (143 questions), we have the following meta-factors
+
+<details> 
+<summary> &rarr; Factor 1</summary>
+<img src="/output/figure/variable_reduction/factors/factors_1.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 2</summary>
+<img src="/output/figure/variable_reduction/factors/factors_2.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 3</summary>
+<img src="/output/figure/variable_reduction/factors/factors_3.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 4</summary>
+<img src="/output/figure/variable_reduction/factors/factors_4.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 5</summary>
+<img src="/output/figure/variable_reduction/factors/factors_5.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 6</summary>
+<img src="/output/figure/variable_reduction/factors/factors_6.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 7</summary>
+<img src="/output/figure/variable_reduction/factors/factors_7.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 8</summary>
+<img src="/output/figure/variable_reduction/factors/factors_8.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 9</summary>
+<img src="/output/figure/variable_reduction/factors/factors_9.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 10</summary>
+<img src="/output/figure/variable_reduction/factors/factors_10.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 12</summary>
+<img src="/output/figure/variable_reduction/factors/factors_11.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 12</summary>
+<img src="/output/figure/variable_reduction/factors/factors_12.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 13</summary>
+<img src="/output/figure/variable_reduction/factors/factors_13.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 14</summary>
+<img src="/output/figure/variable_reduction/factors/factors_14.png" width="800"/>
+</details>
+
+<details> 
+<summary> &rarr; Factor 15</summary>
+<img src="/output/figure/variable_reduction/factors/factors_15.png" width="800"/>
+</details>
 
 
 
