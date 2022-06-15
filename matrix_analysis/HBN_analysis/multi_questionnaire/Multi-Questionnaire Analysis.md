@@ -2,6 +2,11 @@
 
 
 - [Multi-Questionnaire Analysis](#multi-questionnaire-analysis)
+  - [New Updates](#new-updates)
+    - [Data loading](#data-loading)
+    - [Factorization of individual questionnaire](#factorization-of-individual-questionnaire)
+    - [Meta-factorization of questionnaires](#meta-factorization-of-questionnaires)
+    - [Variables reduction](#variables-reduction)
   - [Data Preparation](#data-preparation)
   - [Individual questionnaire analysis](#individual-questionnaire-analysis)
     - [Factors of each questionnaire](#factors-of-each-questionnaire)
@@ -14,6 +19,295 @@
       - [Prediction performance of individual questionnaires](#prediction-performance-of-individual-questionnaires)
       - [Prediction performance for harmonized data](#prediction-performance-for-harmonized-data)
   - [Achieved results](#achieved-results)
+
+## New Updates
+
+### Data loading
+
+- Instead of using `Anonymized ID` for subject identification, we use `EID` instead.
+- Issues from previous version have been modified
+- For `TRF`, we observed that there are multiple responses for the same subjects. We suspect multiple teachers filled in reports for each subjects. (4521 items $\to$ 1506 items).
+
+  <details>
+  <summary> For instance </summary>
+  <img src="2022-06-15-02-31-30.png" width="800"/>
+  </details>
+
+- Train, validation, test split are incorporated into the matrix factorization and prediction steps.
+  <details>
+  <summary> Full dataset </summary>
+  <img src="/output/figure/merge_response_normalized.png" width="800"/>
+  </details>
+
+  <details>
+  <summary> Availability </summary>
+  <img src="/output/figure/merge_response_availability.png" width="800"/>
+  </details>
+
+  <details>
+  <summary> Train availability</summary>
+  <img src="/output/figure/merge_train.png" width="800"/>
+  </details>
+
+  <details>
+  <summary> Validation availability</summary>
+  <img src="/output/figure/merge_valid.png" width="800"/>
+  </details>
+
+  <details>
+  <summary> Test availability </summary>
+  <img src="/output/figure/merge_test.png" width="800"/>
+  </details>
+
+
+
+### Factorization of individual questionnaire
+
+Using a finer grid-search on the optimal intrinsic dimension, a more compact result is obtained
+
+<img src="2022-06-15-07-28-03.png" width="600"/>
+
+The detection is based on a block-wise cross validation scheme, in which the optimal pair (dimesion, L1-beta) is recognized through grid-search. For example, the `C3SR` questionnaire :
+<img src="2022-06-15-07-42-09.png" width="800"/>
+
+Factors for each questionnaires are shown below (Click to enlarge)
+<details>
+  <summary> &rarr; ARI_P</summary>
+  <p>
+    <img src="/output/figure/factors/ARI_P_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; ARI_S</summary>
+  <p>
+    <img src="/output/figure/factors/ARI_S_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; ASSQ</summary>
+  <p>
+    <img src="/output/figure/factors/ASSQ_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; C3SR</summary>
+  <p>
+    <img src="/output/figure/factors/C3SR_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; CBCL</summary>
+  <p>
+    <img src="/output/figure/factors/CBCL_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; ESWAN</summary>
+  <p>
+    <img src="/output/figure/factors/ESWAN_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; ICU_P</summary>
+  <p>
+    <img src="/output/figure/factors/ICU_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; ICU_SR</summary>
+  <p>
+    <img src="/output/figure/factors/ICU_SR_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; MFQ_P</summary>
+  <p>
+    <img src="/output/figure/factors/MFQ_P_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; MFQ_SR</summary>
+  <p>
+    <img src="/output/figure/factors/MFQ_SR_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; PANAS</summary>
+  <p>
+    <img src="/output/figure/factors/PANAS_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; RBS</summary>
+  <p>
+    <img src="/output/figure/factors/RBS_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; SCARED_P</summary>
+  <p>
+    <img src="/output/figure/factors/SCARED_P_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; SCARED_SR</summary>
+  <p>
+    <img src="/output/figure/factors/SCARED_SR_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; SCQ factors</summary>
+  <p>
+    <img src="/output/figure/factors/SCQ_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; SDQ factors</summary>
+  <p>
+    <img src="/output/figure/factors/SDQ_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; SRS factors</summary>
+  <p>
+    <img src="/output/figure/factors/SRS_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; SWAN factors</summary>
+  <p>
+    <img src="/output/figure/factors/SWAN_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; SympChck factors</summary>
+  <p>
+    <img src="/output/figure/factors/CSC_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; TRF factors</summary>
+  <p>
+    <img src="/output/figure/factors/TRF_factors.png" width="600"/>
+  </p>
+</details>
+
+<details>
+  <summary> &rarr; YSR factors</summary>
+  <p>
+    <img src="/output/figure/factors/YSR_factors.png" width="600"/>
+  </p>
+</details>
+
+### Meta-factorization of questionnaires
+
+Once we obtained factors from all questionnaires under consideration, we aggregrate factors and perform a factor-level factorization. 
+
+![](2022-06-15-07-49-22.png)
+
+![](2022-06-15-07-50-05.png)
+
+Similarly, the factorization model is developed on the training dataset (2500 subjects). The perform inference of meta-factors,
+1. inference is performed on individual questionnaires (validation / test set)
+2. aggregrate the inferred factors and perform inference for meta-factors
+  <details> 
+  <summary> &rarr; Aggregrated factors (validation)</summary>
+  <p>
+    <img src="2022-06-15-07-53-29.png" width="600"/>
+  </p>
+  </details>
+
+  <details> 
+  <summary> &rarr; Aggregrated factors (test)</summary>
+  <p>
+    <img src="2022-06-15-07-55-36.png" width="600"/>
+  </p>
+  </details>
+
+3. Perform dimension detection using CV
+<img src="2022-06-15-07-58-48.png" width="600"/>
+
+These gives the meta-factor factorization:
+![](2022-06-15-07-59-37.png)
+
+Based on the meta-factors, correlation/cosine similarity between pairs of meta-factors can be computed:
+<img src="2022-06-15-08-06-22.png" width="600"/>
+<img src="2022-06-15-08-07-04.png" width="600"/>
+<img src="2022-06-15-08-30-18.png" width="600"/>
+
+> **Remark**
+> - The optimal L1-beta detect is small (0.01), implying that the input matrix (aggregrated factors) are rich in information and there is not much room for further sparsification.
+> - The ESWAN has the largest number of factors. This is reasonable as there are 4 groups of variables: `SocAnx`, `MDD`, `DMDD`, `Panic`
+> - Fixing the duplication of responses in `TRF` helps improving the quality of factors.
+
+
+
+### Variables reduction
+
+From the meta-factors, we are able to recover the question-level embedding. Importance of questions can be obtained by sorting the magnitude of their loadings in each factors.
+
+![](2022-06-15-08-37-40.png)
+
+To study the availability of reducing questions, we gradually reduce the number of questions by
+
+<img src="/output/figure/variable_reduction/ADHD_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/BPD_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/Depression_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/Eating_Disorder_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/Encopresis_Enuresis_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/GenAnxiety_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/OCD_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/ODD_ConductDis_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/PTSD_Trauma_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/Panic_Agoraphobia_SeparationAnx_SocialAnx_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/Schizophrenia_Psychosis_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/Sleep_Probs_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/Specific_Phobia_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/Substance_Issue_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/Suicidal_SelfHarm_Homicidal_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/Suspected_ASD_trend.png" width="600"/>
+
+<img src="/output/figure/variable_reduction/Tic_trend.png" width="600"/>
+
+
+
+
+
+
 
 ## Data Preparation
 
