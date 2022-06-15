@@ -31,7 +31,7 @@
 
   <details>
   <summary> For instance </summary>
-  <img src="2022-06-15-02-31-30.png" width="800"/>
+  <img src="./2022-06-15-02-31-30.png" width="800"/>
   </details>
 
 - Train, validation, test split are incorporated into the matrix factorization and prediction steps.
