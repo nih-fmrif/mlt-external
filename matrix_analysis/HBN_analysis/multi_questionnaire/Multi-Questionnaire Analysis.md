@@ -193,7 +193,6 @@ Answer: Top 10 per metafactor?
 
 <div>
   <iframe id="Testing"
-      display="block"
       title="Test brain"
       width="400"
       height="400"
