@@ -191,4 +191,4 @@ Answer: Top 10 per metafactor?
 
 ### Prediction on Structural Brain Imaging
 
-[Brain Test](/figure/brain/brain_test.html)
+[Brain Test](./figure/brain/brain_test.html)
