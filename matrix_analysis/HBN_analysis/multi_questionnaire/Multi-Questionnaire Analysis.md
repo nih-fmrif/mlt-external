@@ -77,7 +77,7 @@
   - note that "disorder-specific" questionnaires don't do much better at predicting their respective diagnosis
   - possible heatmap: diagnosis vs scales (tile so that cross-domain instruments come first, then diagnostic-specific); ribbon of cross-diagnosis results do well
   - test per questionnaire (ours vs raw vs scale)
-  <img src="./figure/prediction/subscale.png" width="800"/>
+<img src="./figure/prediction/subscale.png" width="800"/>
 - in the supplement
   - repeat the qualitative and quantitative assessments of CBCL and SDQ, with their respective subscales (if available)
   - heatmaps for FA
