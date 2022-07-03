@@ -191,11 +191,4 @@ Answer: Top 10 per metafactor?
 
 ### Prediction on Structural Brain Imaging
 
-<div>
-  <iframe id="Testing"
-      title="Test brain"
-      width="400"
-      height="400"
-      src="./figure/brain/brain_test.html">
-  </iframe>
-</div>
+[Brain Test](/figure/brain/brain_test.html)
