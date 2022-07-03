@@ -1,16 +1,17 @@
 - [Meta-factor model: My God, it's full of Factors!](#meta-factor-model-my-god-its-full-of-factors)
   - [Introduction](#introduction)
-    - [Historical background and motivation](#historical-background-and-motivation)
-    - [What does this paper do?](#what-does-this-paper-do)
-      - [Interpretable factorization of questionnaires](#interpretable-factorization-of-questionnaires)
+  - [Historical background and motivation](#historical-background-and-motivation)
+  - [What does this paper do?](#what-does-this-paper-do)
+    - [Interpretable factorization of questionnaires](#interpretable-factorization-of-questionnaires)
     - [Meta-factorization of questionnaires](#meta-factorization-of-questionnaires)
     - [Micro-Meta-Factorization of questionnaires [need a better name]](#micro-meta-factorization-of-questionnaires-need-a-better-name)
+    - [Prediction on Structural Brain Imaging](#prediction-on-structural-brain-imaging)
 
 # Meta-factor model: My God, it's full of Factors!
 
 ## Introduction
 
-### Historical background and motivation
+## Historical background and motivation
 
 - many questionnaires developed at different points in time, to get at different aspects of psychopathology
 - generally, a questionnaire assumes one or more latent constructs, and is designed so that the presence of these can be quantified, e.g. by
@@ -20,9 +21,9 @@
 - problem 2: redundancy across questionnaires
 - problem 3: no neurobiological basis for constructs
 
-### What does this paper do?
+## What does this paper do?
 
-#### Interpretable factorization of questionnaires
+### Interpretable factorization of questionnaires
 
 - We introduce a new approach for factoring questionnaires that yields more interpretable factors, and apply it to CBCL and SDQ from HBN
 - qualitative assessment: show the questions associated with factors, and that some factors can cross subscales
@@ -186,3 +187,16 @@ Answer: Top 10 per metafactor?
 <img src="./figure/metafactor_loadings/factors/train_average/factors_14.png" width="600"/>
 <img src="./figure/metafactor_loadings/factors/train_average/factors_15.png" width="600"/>
 </details>
+
+
+### Prediction on Structural Brain Imaging
+
+<div>
+  <iframe id="Testing"
+      display="block"
+      title="Test brain"
+      width="400"
+      height="400"
+      src="./figure/brain/brain_test.html">
+  </iframe>
+</div>
