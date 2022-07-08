@@ -198,11 +198,11 @@ Per-vertex (164k resolution) R-squared between predicted and test set
 <img src="./figure/brain/split_1/SVL/thickness_R-squared.png" width="100%"/>
 
 
-Per-vertex (164k resolution) correlation between predicted and test set
+<!-- Per-vertex (164k resolution) correlation between predicted and test set
 <img src="./figure/brain/split_1/SVL/area_correlation.png" width="100%"/>
 <img src="./figure/brain/split_1/SVL/curv_correlation.png" width="100%"/>
 <img src="./figure/brain/split_1/SVL/sulc_correlation.png" width="100%"/>
-<img src="./figure/brain/split_1/SVL/thickness_correlation.png" width="100%"/>
+<img src="./figure/brain/split_1/SVL/thickness_correlation.png" width="100%"/> -->
 
 <details>
 <summary> Ridge regression coefficient of each metafactor (Area) </summary>
