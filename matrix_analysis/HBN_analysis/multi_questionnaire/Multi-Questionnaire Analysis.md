@@ -190,3 +190,40 @@ Answer: Top 10 per metafactor?
 
 
 ### Prediction on Structural Brain Imaging
+
+Per-vertex (164k resolution) R-squared between predicted and test set
+<img src="./figure/brain/split_1/SVL/area_R-squared.png" width="100%"/>
+<img src="./figure/brain/split_1/SVL/curv_R-squared.png" width="100%"/>
+<img src="./figure/brain/split_1/SVL/sulc_R-squared.png" width="100%"/>
+<img src="./figure/brain/split_1/SVL/thickness_R-squared.png" width="100%"/>
+
+
+Per-vertex (164k resolution) correlation between predicted and test set
+<img src="./figure/brain/split_1/SVL/area_correlation.png" width="100%"/>
+<img src="./figure/brain/split_1/SVL/curv_correlation.png" width="100%"/>
+<img src="./figure/brain/split_1/SVL/sulc_correlation.png" width="100%"/>
+<img src="./figure/brain/split_1/SVL/thickness_correlation.png" width="100%"/>
+
+<details>
+<summary> Ridge regression coefficient of each metafactor (Area) </summary>
+  <img src="./figure/brain/split/SVL/area-L-weights.png" width="100%"/>
+  <img src="./figure/brain/split/SVL/area-R-weights.png" width="100%"/>
+</details>
+
+<details>
+<summary> Ridge regression coefficient of each metafactor (Curv) </summary>
+  <img src="./figure/brain/split/SVL/curv-L-weights.png" width="100%"/>
+  <img src="./figure/brain/split/SVL/curv-R-weights.png" width="100%"/>
+</details>
+
+<details>
+<summary> Ridge regression coefficient of each metafactor (Sulc) </summary>
+  <img src="./figure/brain/split/SVL/sulc-L-weights.png" width="100%"/>
+  <img src="./figure/brain/split/SVL/sulc-R-weights.png" width="100%"/>
+</details>
+
+<details>
+<summary> Ridge regression coefficient of each metafactor (Thickness) </summary>
+  <img src="./figure/brain/split/SVL/thickness-L-weights.png" width="100%"/>
+  <img src="./figure/brain/split/SVL/thickness-R-weights.png" width="100%"/>
+</details>
