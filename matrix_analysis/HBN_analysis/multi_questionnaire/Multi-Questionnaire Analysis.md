@@ -30,6 +30,7 @@
 **CBCL question factor (proposed)**
 <figure>
 <img src="./figure/question_loadings/CBCL_propose.png" width="800"/>
+
 <figcaption align="left">
 <b>Figure</b>: Question embedding of the CBCL questionnaire. Questions are sorted based on the CBCL subscales. Age (Old and Young) and gender (Femail and male) factors are set as confounders in the matrix decomposition model.
 </figcaption> 
@@ -49,6 +50,7 @@
   <summary>CBCL question factor (Factor Analysis, promax rotation)</summary>
   <figure>
   <img src="./figure/question_loadings/CBCL_FA.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: Question embedding obtained through Factor ANalysis with promax rotation for interpretability. The number of factors is determined by Bayesian Information Criterion (BIC).
   </figcaption>
@@ -58,6 +60,7 @@
   <summary>CBCL question factor (Subscale)</summary>
   <figure>
   <img src="./figure/question_loadings/CBCL_subscale.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: CBCL-subscale. Questions in the same subscale group are equally weighted.
   </figcaption>
@@ -75,6 +78,7 @@
 - quantitative assessment: apply to ABCD as well, and show that the loadings for factors are very similar between HBN and ABCD
 <figure>
 <img src="./figure/question_loadings/ABCD_CBCL_propose.png" width="800"/>
+
 <figcaption align="left">
 <b>Figure</b>: Question embedding of the CBCL questionnaire in ABCD dataset. The pattern of the factor loadings resemble to HBN's result. 
 </figcaption>
@@ -84,6 +88,7 @@
 - how are our factors and subscales related (sankey plots for CBCL and SDQ)
 <figure>
 <img src="./figure/question_loadings/sanky_plot_CBCL.png" width="800"/>
+
 <figcaption align="left">
 <b>Figure</b>: Sanky plot showing how CBCL variables (items in left-most column) are assigned: Proposed factors (Blue hubs, second column from left), factors obtained from Factor Analysis (Red hubs, right-most column) and CBCL-subscales (second column from right). Colors of the links are set based on CBCL-subscales.
 </figcaption>
@@ -97,12 +102,14 @@
   - who has filled what questionnaire
   <figure>
   <img src="./figure/merge_response_availability.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: Subject response availability in different questionnaires. Subjects are sorted based on their ages in ascending order.
   </figcaption>
   </figure>
   <figure>
   <img src="./figure/merge_response_normalized.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: Normalized subject responses. The original response range is marked on the upper x-axis.
   </figcaption>
@@ -127,6 +134,7 @@
   - test per questionnaire (ours vs raw vs scale)
   <figure>
   <img src="./figure/prediction/subscale.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: Prediction performance of each diagnostic classification (vertical axis) using available subscale of different dataset (horizontal axis).
   </figcaption>
@@ -136,6 +144,7 @@
   - heatmaps for FA
   <figure>
   <img src="./figure/prediction/FA_promax.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: Prediction performance of each diagnostic classification (vertical axis) using factors of different dataset (horizontal axis) obtained by the Factor Analysis with promax rotation.
   </figcaption>
@@ -146,6 +155,7 @@
   <figure>
   <img src="./figure/metafactor_loadings/train_metafactor_availability.png" width="800"/>
   <img src="./figure/metafactor_loadings/train_metafactor.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: Factors obtained from each questionnaire are concatenated. Availability and the entries of the factors are shown. Since the factors are constrained to be bounded between 0 and 1, no normalization step is required.
   </figcaption>
@@ -164,6 +174,7 @@
   - level 2 (factors of factors)
   <figure>
   <img src="./figure/metafactor_loadings/metafactor.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: The factors of factors, or the metafactor, obtained from factorizing the concatenated factors using the proposed method.
   </figcaption>
@@ -172,6 +183,7 @@
   - qualitative assessment: show that meta-factors can be questionnaire specific, or cross-questionnaire (group together questions across questionnaires meaningfully)
   <figure>
   <img src="./figure/metafactor_loadings/metafactor_corr.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: Visualization of the correlation of each pair of variable in the metafactors.
   </figcaption>
@@ -180,6 +192,7 @@
   - this is done using the diagram for the meta-factor structure, but then also the top questions per meta-factor (showing questionnaire provenance)
   <figure>
   <img src="./figure/metafactor_loadings/aggregrated_loadings_centroid.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: Question embedding under the metafactor representation.
   </figcaption>
@@ -200,6 +213,7 @@ Finally, it did not escape our notice that the process to generate the 15 meta-f
 
   <figure>
   <img src="./figure/metafactor_loadings/cluster_centroid.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: Under the metafactor representation, Euclidean-distance based clustering of factors from each questionnaires are performed. Correlation matrix including questionnaires' factors and cluster centroid is shown.
   </figcaption>
@@ -211,6 +225,7 @@ Finally, it did not escape our notice that the process to generate the 15 meta-f
   <img src="./figure/variable_reduction/ADHD_trend.png" width="800"/>
   <img src="./figure/variable_reduction/Depression_trend.png" width="800"/>
   <img src="./figure/variable_reduction/GenAnxiety_trend.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: Trend of diagnostic performance using only Top-K questions in each factors/metafactors. The decay rate of the prediction performance is slowest under the proposed framework, indicating that the metafactors accurately capture the variable importance from multi-questionnaire dataset.
   </figcaption>
@@ -241,6 +256,7 @@ Finally, it did not escape our notice that the process to generate the 15 meta-f
   Question sorted according to R-squared of 'full' matrix reconstruction
   <figure>
   <img src="./figure/imputation/R2_full_indep_sort.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b>: By masking question responses except the top-K ones in each metafactors, we impute the masked responses in the test dataset. Per-question R-squared between the masked responses and the imputation is computed.
   </figcaption>
@@ -248,6 +264,7 @@ Finally, it did not escape our notice that the process to generate the 15 meta-f
   Question sorted according to R-squared per experiment
   <figure>
   <img src="./figure/imputation/R2_full_consistent_sort.png" width="800"/>
+
   <figcaption align="left">
   <b>Figure</b> R-squared are sorted based on the baseline "full", the R-squared obtained without any masking.
   </figcaption>
@@ -260,6 +277,7 @@ Answer: Top 10 per metafactor?
 - compare with CBCL and SDQ (roughly the same \# of questions)
 <figure>
 <img src="./figure/imputation/comparison.png" width="600"/>
+
 <figcaption align="left">
 <b>Figure</b>: Comparison of diagnostic prediction performance between the top-K factors and the cross-domain instruments (CBCL-subscale and SDQ-subscale). AUC score is used as the metric for measuring performance. The best performing representation for each diagnostic prediction is black framed. Result suggests that Top-10 representation is sufficient to achieve a better prediction performance on ASD/Anxiety related diagnoses, while maintaining similar prediction power in other areas.
 </figcaption>
