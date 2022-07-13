@@ -27,6 +27,8 @@
 
 - We introduce a new approach for factoring questionnaires that yields more interpretable factors, and apply it to CBCL and SDQ from HBN
 - qualitative assessment: show the questions associated with factors, and that some factors can cross subscales
+
+
 **CBCL question factor (proposed)**
 <figure>
 <img src="./figure/question_loadings/CBCL_propose.png" width="800"/>
@@ -35,6 +37,7 @@
 <b>Figure</b>: Question embedding of the CBCL questionnaire. Questions are sorted based on the CBCL subscales. Age (Old and Young) and gender (Femail and male) factors are set as confounders in the matrix decomposition model.
 </figcaption> 
 </figure>
+
   <details>
   <summary>Loadings of each CBCL question factor</summary>
   <img src="./figure/question_loadings/propose/factors_1.png" width="800"/>
@@ -46,6 +49,7 @@
   <img src="./figure/question_loadings/propose/factors_7.png" width="800"/>
   <img src="./figure/question_loadings/propose/factors_8.png" width="800"/>
   </details>
+
   <details>
   <summary>CBCL question factor (Factor Analysis, promax rotation)</summary>
   <figure>
@@ -56,6 +60,7 @@
   </figcaption>
   </figure>
   </details>
+
   <details>
   <summary>CBCL question factor (Subscale)</summary>
   <figure>
