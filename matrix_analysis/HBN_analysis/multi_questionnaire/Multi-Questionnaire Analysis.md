@@ -103,7 +103,7 @@
 <img src="./figure/question_loadings/sanky_plot_SDQ.png" width="800"/>
 
 <figcaption align="left">
-<b>Figure</b>: Sanky plot showing how SDQ variables (items in left-most column) are assigned: Proposed factors (Blue hubs, second column from left), factors obtained from Factor Analysis (Red hubs, right-most column) and SDQ-subscales (second column from right). Colors of the links are set based on SDQ-subscales.
+<b>Figure</b>: Sanky plot showing how SDQ variables (items in left-most column) are assigned: Proposed factors (Blue hubs, second column from left), factors obtained from Factor Analysis (Red hubs, right-most column) and SDQ-subscales (second column from right). Colors of the links are set based on SDQ-subscales. Items with an "(R)" corresponds to an impairment/opposite meaning.
 </figcaption>
 </figure>
 
